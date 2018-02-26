@@ -12,12 +12,13 @@ namespace AutoStockTransaction
 {
     public partial class Form1 : Form
     {
+        int indexOfListboxAdd;
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void 更新股票代碼ToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void 更新股票代碼ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             更新股票代碼ToolStripMenuItem.Enabled = false;
             CatchStkData cd = new CatchStkData();
@@ -39,8 +40,6 @@ namespace AutoStockTransaction
             {
                 更新股票代碼ToolStripMenuItem.Enabled = true;
             }
-            //此指令為測試用，執行完後會關閉整個程式
-            Application.Exit();
         }
 
         private void 自動更新股票歷史價格ToolStripMenuItem_Click(object sender, EventArgs e)

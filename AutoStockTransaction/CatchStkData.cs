@@ -2,17 +2,20 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AutoStockTransaction
 {
+
     public class CatchStkData
     {
         private List<StockData> stockDataCollection = new List<StockData>();
         private int RptCounts = 0;
-
+        Stopwatch RST = new Stopwatch();
+        Stopwatch AST = new Stopwatch();
         public async Task MultiCatch(IProgress<int> progress, IProgress<string> processTime)
         {
             Initialization init = new Initialization();
@@ -20,15 +23,15 @@ namespace AutoStockTransaction
             {
                 Catch(strUrl, progress);
             }
-            WriteToDB();
-            //if (processTime != null)
-            //{
-            //    processTime.Report($"RemoveRangeTime:{RT.ElapsedMilliseconds}");
-            //    processTime.Report($"SaveChanges(Remove):{SCT.ElapsedMilliseconds}");
-            //    processTime.Report($"DataMove:{MS.ElapsedMilliseconds}");
-            //    processTime.Report($"AddRangeTime:{AT.ElapsedMilliseconds}");
-            //    processTime.Report($"SaveChanges(Add):{AST.ElapsedMilliseconds}");
-            //}
+            WriteToDB(processTime);
+            if (processTime != null)
+            {
+                //processTime.Report($"RemoveRangeTime:{RT.ElapsedMilliseconds}");
+                //processTime.Report($"SaveChanges(Remove):{SCT.ElapsedMilliseconds}");
+                //processTime.Report($"DataMove:{MS.ElapsedMilliseconds}");
+                processTime.Report($"SaveChanges(Remove):{RST.ElapsedMilliseconds}");
+                processTime.Report($"SaveChanges(Add):{AST.ElapsedMilliseconds}");
+            }
         }
 
         /// <summary>
@@ -161,11 +164,10 @@ namespace AutoStockTransaction
             }
         }
 
-        public void WriteToDB()
+        public void WriteToDB(IProgress<string> processTime)
         {
             using (StockEntities context = new StockEntities())
             {
-                DbSet<ListedStock> listedstockSet = context.ListedStock;
                 List<ListedStock> stockList = new List<ListedStock>();
                 //將自訂類別轉換成ListedStock類別
                 foreach (StockData sd in stockDataCollection)
@@ -183,16 +185,24 @@ namespace AutoStockTransaction
                     };
                     stockList.Add(stock);
                 }
-                //如果有相同的代碼，就從stockList中移除
-                foreach (ListedStock stock in stockList)
-                {
-                    ListedStock compareStkCode = context.ListedStock.Where(x => x.StkCode == stock.StkCode).Select(x => x).FirstOrDefault();
-                    if (compareStkCode == null)
-                    {
-                        listedstockSet.Add(stock);
-                    }
-                }
+                //如果找不到重複的主鍵，便加入到儲存列表中
+                //foreach (ListedStock stock in stockList)
+                //{
+                //    ListedStock sameStkCode = context.ListedStock.Where(x => x.StkCode == stock.StkCode).Select(x => x).FirstOrDefault();
+                //    if (sameStkCode == null)
+                //    {
+                //        context.ListedStock.Add(stock);
+                //    }
+                //}
+                List<ListedStock> remove = context.ListedStock.ToList();
+                context.ListedStock.RemoveRange(remove);
+                RST.Start();
                 context.SaveChanges();
+                RST.Stop();
+                context.ListedStock.AddRange(stockList);
+                AST.Start();
+                context.SaveChanges();
+                AST.Stop();
             };
         }
     }
