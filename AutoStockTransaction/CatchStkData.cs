@@ -186,19 +186,14 @@ namespace AutoStockTransaction
                     stockList.Add(stock);
                 }
                 //如果找不到重複的主鍵，便加入到儲存列表中
-                //foreach (ListedStock stock in stockList)
-                //{
-                //    ListedStock sameStkCode = context.ListedStock.Where(x => x.StkCode == stock.StkCode).Select(x => x).FirstOrDefault();
-                //    if (sameStkCode == null)
-                //    {
-                //        context.ListedStock.Add(stock);
-                //    }
-                //}
-                List<ListedStock> remove = context.ListedStock.ToList();
-                context.ListedStock.RemoveRange(remove);
-                RST.Start();
-                context.SaveChanges();
-                RST.Stop();
+                foreach (ListedStock stock in stockList)
+                {
+                    ListedStock sameStkCode = context.ListedStock.Where(x => x.StkCode == stock.StkCode).Select(x => x).FirstOrDefault();
+                    if (sameStkCode == null)
+                    {
+                        context.ListedStock.Add(stock);
+                    }
+                }
                 context.ListedStock.AddRange(stockList);
                 AST.Start();
                 context.SaveChanges();
