@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,10 @@ using System.Windows.Forms;
 
 namespace AutoStockTransaction
 {
+    
     public partial class Form1 : Form
     {
-        int indexOfListboxAdd;
+        private int indexOfListboxAdd = 0;
         public Form1()
         {
             InitializeComponent();
@@ -44,23 +46,13 @@ namespace AutoStockTransaction
 
         private void 自動更新股票歷史價格ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (StockEntities test = new StockEntities())
-            {
-                ListedStock stock = new ListedStock()
-                {
-                    StkCode = "w8743219",
-                    StkCategory = 1,
-                    ISIN_code = "64546",
-                    CFI_code = "646546",
-                    BelongClass = "65465",
-                    MarketNo = "6465",
-                    StkName = "test",
-                    SubmitDate = System.DateTime.Now.ToString()
-                };
-                test.ListedStock.Add(stock);
-                test.SaveChanges();
-                listBox1.Items.Add("完成");
-            };
+            Progress<List<ListedStock>> progressShowStockHistory = new Progress<List<ListedStock>>(RptShowStockHistory);
+            CatchHistoricalPrice CHP = new CatchHistoricalPrice();
+            Stopwatch updateTime = new Stopwatch();
+            updateTime.Start();
+            CHP.UpdateHistory(progressShowStockHistory);
+            updateTime.Stop();
+            listBox1.Items.Add(updateTime.ElapsedMilliseconds);
         }
         void RptStkCodeUpgradeProgress(int percentOfProgress)
         {
@@ -72,6 +64,13 @@ namespace AutoStockTransaction
         void RptProcessTime(string processTime)
         {
             listBox1.Items.Add(processTime);
+        }
+        void RptShowStockHistory(List<ListedStock> showStockHistory)
+        {
+            foreach(ListedStock ls in showStockHistory)
+            {
+                listBox1.Items.Add($"{ls.StkCode}  {ls.StkName}");
+            }
         }
     }
 }

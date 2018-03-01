@@ -23,6 +23,7 @@ namespace AutoStockTransaction
         /// </summary>
         /// <param name="symbol">傳入範例2330.TW</param>
         /// <returns></returns>
+        //取得List
         private async Task<List<HistoryPrice>> GetHistoricalPrice(string symbol)
         {
             //first get a valid token from Yahoo Finance
@@ -34,6 +35,7 @@ namespace AutoStockTransaction
             return hps;
         }
 
+        //取得string
         private async Task GetRawHistoricalPrice(string symbol)
         {
             //first get a valid token from Yahoo Finance
@@ -44,6 +46,21 @@ namespace AutoStockTransaction
             string csvdata = await Historical.GetRawAsync(symbol, DateTime.Now.AddMonths(-1), DateTime.Now).ConfigureAwait(false);
             //process further
 
+        }
+
+        public async void UpdateHistory(IProgress<List<ListedStock>> RptShowStockHistory)
+        {
+            using (StockEntities SE = new StockEntities())
+            {
+                SE.Configuration.ProxyCreationEnabled = true;
+                SE.Configuration.LazyLoadingEnabled = true;
+                List<ListedStock> StkCodeListInCat1 = (from s in SE.ListedStock
+                                                       where s.StkCategory == 1
+                                                       orderby s.StkCode
+                                                       select s).ToList().Where(t => Convert.ToInt32(t.StkCode) >= 9000).ToList();
+                    RptShowStockHistory.Report(StkCodeListInCat1);
+            }
+           
         }
     }
 }

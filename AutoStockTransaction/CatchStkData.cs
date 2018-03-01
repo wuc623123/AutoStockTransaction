@@ -12,8 +12,8 @@ namespace AutoStockTransaction
 
     public class CatchStkData
     {
-        private List<StockData> stockDataCollection = new List<StockData>();
         private int RptCounts = 0;
+        private List<StockData> stockDataCollection = new List<StockData>();
         Stopwatch RST = new Stopwatch();
         Stopwatch AST = new Stopwatch();
         public async Task MultiCatch(IProgress<int> progress, IProgress<string> processTime)
@@ -169,6 +169,7 @@ namespace AutoStockTransaction
             using (StockEntities context = new StockEntities())
             {
                 List<ListedStock> stockList = new List<ListedStock>();
+                
                 //將自訂類別轉換成ListedStock類別
                 foreach (StockData sd in stockDataCollection)
                 {
