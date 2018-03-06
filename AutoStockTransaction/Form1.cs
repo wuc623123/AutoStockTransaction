@@ -23,8 +23,10 @@ namespace AutoStockTransaction
         private async void 更新股票代碼ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             更新股票代碼ToolStripMenuItem.Enabled = false;
+            自動更新股票歷史價格ToolStripMenuItem.Enabled = false;
             CatchStkData cd = new CatchStkData();
             indexOfListboxAdd = listBox1.Items.Add("股票代碼更新中...");
+            //取得更薪資料庫進度
             Progress<int> progress = new Progress<int>(RptStkCodeUpgradeProgress);
             //取得資料庫儲存時間
             Progress<string> processTime = new Progress<string>(RptProcessTime);
@@ -41,18 +43,27 @@ namespace AutoStockTransaction
             finally
             {
                 更新股票代碼ToolStripMenuItem.Enabled = true;
+                自動更新股票歷史價格ToolStripMenuItem.Enabled = true;
             }
         }
 
-        private void 自動更新股票歷史價格ToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void 自動更新股票歷史價格ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Progress<List<ListedStock>> progressShowStockHistory = new Progress<List<ListedStock>>(RptShowStockHistory);
+            //CatchHistoricalPrice CHP = new CatchHistoricalPrice();
+            //var l = await CHP.GetHistoricalPrice("1101", DateTime.Now.AddMonths(-1), DateTime.Now.Date);
+            //foreach (HistoryPriceExtStkCode a in l)
+            //{
+            //    listBox1.Items.Add($"{a.Stkcode} + 張：{(int)a.Volume / 1000} 股：{a.Volume % 1000} + {a.Date}");
+            //}
+            自動更新股票歷史價格ToolStripMenuItem.Enabled = false;
+            更新股票代碼ToolStripMenuItem.Enabled = false;
             CatchHistoricalPrice CHP = new CatchHistoricalPrice();
-            Stopwatch updateTime = new Stopwatch();
-            updateTime.Start();
-            CHP.UpdateHistory(progressShowStockHistory);
-            updateTime.Stop();
-            listBox1.Items.Add(updateTime.ElapsedMilliseconds);
+            Progress<ProgressStoreStructure> historyPriceProgress = new Progress<ProgressStoreStructure>(RptCatchHistoryProgress);
+            indexOfListboxAdd = listBox1.Items.Add("自動更新股票歷史價格中...");
+            await Task.Run(() => CHP.UpdatePriceToDB(historyPriceProgress));
+            listBox1.Items.Add("自動更新股票歷史價格完成!");
+            自動更新股票歷史價格ToolStripMenuItem.Enabled = true;
+            更新股票代碼ToolStripMenuItem.Enabled = true;
         }
         void RptStkCodeUpgradeProgress(int percentOfProgress)
         {
@@ -61,16 +72,20 @@ namespace AutoStockTransaction
                 listBox1.Items[indexOfListboxAdd] = $"股票代碼更新中...{percentOfProgress}%";
             }
         }
+        void RptCatchHistoryProgress(ProgressStoreStructure percentOfProgress)
+        {
+            if (indexOfListboxAdd != -1)
+            {
+                listBox1.Items[indexOfListboxAdd] = $"自動更新股票歷史價格中...網路取得價格:{percentOfProgress.GetProgressOnAllPriceLists}%寫入資料庫:{percentOfProgress.GetProgressOnWrittingDB}%";
+                if(percentOfProgress.ErrorStkCode != null)
+                {
+                    listBox1.Items.Add(percentOfProgress.ErrorStkCode);
+                }
+            }
+        }
         void RptProcessTime(string processTime)
         {
             listBox1.Items.Add(processTime);
-        }
-        void RptShowStockHistory(List<ListedStock> showStockHistory)
-        {
-            foreach(ListedStock ls in showStockHistory)
-            {
-                listBox1.Items.Add($"{ls.StkCode}  {ls.StkName}");
-            }
         }
     }
 }

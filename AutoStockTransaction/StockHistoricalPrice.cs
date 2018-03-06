@@ -16,12 +16,12 @@ namespace AutoStockTransaction
     {
         public string StkCode { get; set; }
         public System.DateTime Date { get; set; }
-        public decimal OpenPrice { get; set; }
-        public decimal HighPrice { get; set; }
-        public decimal LowPrice { get; set; }
-        public decimal ClosePrice { get; set; }
-        public decimal AdjustedClosePrice { get; set; }
-        public int Volume { get; set; }
+        public double OpenPrice { get; set; }
+        public double HighPrice { get; set; }
+        public double LowPrice { get; set; }
+        public double ClosePrice { get; set; }
+        public double AdjustedClosePrice { get; set; }
+        public double Volume { get; set; }
     
         public virtual ListedStock ListedStock { get; set; }
     }

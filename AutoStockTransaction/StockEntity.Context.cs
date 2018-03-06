@@ -27,6 +27,5 @@ namespace AutoStockTransaction
     
         public virtual DbSet<ListedStock> ListedStock { get; set; }
         public virtual DbSet<StockHistoricalPrice> StockHistoricalPrice { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

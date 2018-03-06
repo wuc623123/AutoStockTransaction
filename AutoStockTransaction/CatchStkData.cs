@@ -166,7 +166,7 @@ namespace AutoStockTransaction
 
         public void WriteToDB(IProgress<string> processTime)
         {
-            using (StockEntities context = new StockEntities())
+            using (StockEntities se = new StockEntities())
             {
                 List<ListedStock> stockList = new List<ListedStock>();
                 
@@ -189,15 +189,15 @@ namespace AutoStockTransaction
                 //如果找不到重複的主鍵，便加入到儲存列表中
                 foreach (ListedStock stock in stockList)
                 {
-                    ListedStock sameStkCode = context.ListedStock.Where(x => x.StkCode == stock.StkCode).Select(x => x).FirstOrDefault();
+                    ListedStock sameStkCode = se.ListedStock.Where(x => x.StkCode == stock.StkCode).Select(x => x).FirstOrDefault();
                     if (sameStkCode == null)
                     {
-                        context.ListedStock.Add(stock);
+                        se.ListedStock.Add(stock);
                     }
                 }
-                context.ListedStock.AddRange(stockList);
+                se.ListedStock.AddRange(stockList);
                 AST.Start();
-                context.SaveChanges();
+                se.SaveChanges();
                 AST.Stop();
             };
         }

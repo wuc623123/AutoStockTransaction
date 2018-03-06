@@ -14,6 +14,12 @@ namespace AutoStockTransaction
     
     public partial class ListedStock
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ListedStock()
+        {
+            this.StockHistoricalPrice = new HashSet<StockHistoricalPrice>();
+        }
+    
         public int StkCategory { get; set; }
         public string StkCode { get; set; }
         public string StkName { get; set; }
@@ -23,6 +29,7 @@ namespace AutoStockTransaction
         public string BelongClass { get; set; }
         public string CFI_code { get; set; }
     
-        public virtual StockHistoricalPrice StockHistoricalPrice { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StockHistoricalPrice> StockHistoricalPrice { get; set; }
     }
 }
