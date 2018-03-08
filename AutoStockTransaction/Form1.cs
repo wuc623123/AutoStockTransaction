@@ -50,11 +50,12 @@ namespace AutoStockTransaction
         private async void 自動更新股票歷史價格ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //CatchHistoricalPrice CHP = new CatchHistoricalPrice();
-            //var l = await CHP.GetHistoricalPrice("1101", DateTime.Now.AddMonths(-1), DateTime.Now.Date);
+            //var l = await CHP.GetHistoricalPrice("1256.TW", DateTime.Now.AddMonths(-5), DateTime.Now.Date);
             //foreach (HistoryPriceExtStkCode a in l)
             //{
             //    listBox1.Items.Add($"{a.Stkcode} + 張：{(int)a.Volume / 1000} 股：{a.Volume % 1000} + {a.Date}");
             //}
+
             自動更新股票歷史價格ToolStripMenuItem.Enabled = false;
             更新股票代碼ToolStripMenuItem.Enabled = false;
             CatchHistoricalPrice CHP = new CatchHistoricalPrice();
@@ -64,6 +65,12 @@ namespace AutoStockTransaction
             listBox1.Items.Add("自動更新股票歷史價格完成!");
             自動更新股票歷史價格ToolStripMenuItem.Enabled = true;
             更新股票代碼ToolStripMenuItem.Enabled = true;
+
+            //var iii = GetAllNeededAddStkCode();
+            //foreach(ListedStock a in iii)
+            //{
+            //    listBox1.Items.Add(a.StkCode);
+            //}
         }
         void RptStkCodeUpgradeProgress(int percentOfProgress)
         {
@@ -87,5 +94,18 @@ namespace AutoStockTransaction
         {
             listBox1.Items.Add(processTime);
         }
+        //private List<ListedStock> GetAllNeededAddStkCode()
+        //{
+        //    using (StockEntities SE = new StockEntities())
+        //    {
+        //        var uuu = from a in SE.StockHistoricalPrice
+        //                  join b in SE.ListedStock
+        //                  on new { a.StkCode } equals new { b.StkCode } into ab
+        //                  from abcom in ab.DefaultIfEmpty()
+        //                  select abcom;
+        //        //取得stkCodeListInCat1除了stockPriceList的差集, 結果為沒有任何價格紀錄需要被新增的集合
+        //        return uuu.ToList();
+        //    }
+        //}
     }
 }

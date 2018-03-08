@@ -18,13 +18,18 @@ namespace AutoStockTransaction
         public async Task UpdatePriceToDB(IProgress<ProgressStoreStructure> progress)
         {
             //取得stkcode差集列表
-            List<ListedStock> neededUpdateList = await GetAllNeededAddStkCode();
+            List<string> neededUpdateList = await GetAllNeededAddStkCode();
             //取得所有需要新增的股票價格列表
             ConcurrentStack<List<HistoryPriceExtStkCode>> allStkPrice = await GetAllStkPrice(neededUpdateList, progress);
             using (StockEntities se = new StockEntities())
             {
+                se.Configuration.AutoDetectChangesEnabled = false;
+                int index = 0;
                 foreach (List<HistoryPriceExtStkCode> priceOfList in allStkPrice)
                 {
+                    var RptProgress = new ProgressStoreStructure();
+
+                    List<StockHistoricalPrice> transToSHP = new List<StockHistoricalPrice>();
                     foreach (HistoryPriceExtStkCode aHistoryPrice in priceOfList)
                     {
                         StockHistoricalPrice SHP = new StockHistoricalPrice()
@@ -38,38 +43,34 @@ namespace AutoStockTransaction
                             AdjustedClosePrice = aHistoryPrice.AdjClose,
                             Volume = aHistoryPrice.Volume
                         };
-                        se.StockHistoricalPrice.Add(SHP);
+                        transToSHP.Add(SHP);
                     }
+                    se.BulkInsert<StockHistoricalPrice>(transToSHP);
+                    RptProgress.GetProgressOnWrittingDB = (float) index++ / allStkPrice.Count;
+                    progress.Report(RptProgress);
                 }
-                se.SaveChanges();
             }
         }
         /// <summary>
         /// Gets all needed add STK code.
         /// </summary>
         /// <returns></returns>
-        private async Task<List<ListedStock>> GetAllNeededAddStkCode()
+        private async Task<List<string>> GetAllNeededAddStkCode()
         {
             using (StockEntities SE = new StockEntities())
             {
-                SE.Configuration.ProxyCreationEnabled = true;
-                SE.Configuration.LazyLoadingEnabled = true;
+                //SE.Configuration.ProxyCreationEnabled = true;
+                //SE.Configuration.LazyLoadingEnabled = true;
                 //取得category = 1所有項目的列表
-                //IQueryable<string> stkCodeListInCat1 = from s in SE.ListedStock
-                //                                       where s.StkCategory == 1
-                //                                       orderby s.StkCode
-                //                                       select s.StkCode;
+                IQueryable<string> stkCodeListInCat1 = from s in SE.ListedStock
+
+                                                       where s.StkCategory == 1
+                                                       select s.StkCode;
                 ////取得股票價格所有項目的列表
-                //IQueryable<string> stockPriceList = from a in SE.StockHistoricalPrice
-                //                                    select a.StkCode;
-                IQueryable<ListedStock> exceptList = from ls in SE.ListedStock
-                                                     from shp in SE.StockHistoricalPrice
-                                                     where ls.StkCategory == 1
-                                                     where ls.StkCode != shp.StkCode
-                                                     orderby ls.StkCode
-                                                     select ls;
+                IQueryable<string> stockPriceList = from a in SE.StockHistoricalPrice
+                                                    select a.StkCode;
+                IQueryable<string> exceptList = stkCodeListInCat1.Except(stockPriceList.Distinct());
                 //取得stkCodeListInCat1除了stockPriceList的差集, 結果為沒有任何價格紀錄需要被新增的集合
-                //List<string> exceptList = stkCodeListInCat1.Except(stockPriceList).ToList();
                 totalStkAmount = exceptList.Count();
                 return exceptList.ToList();
             }
@@ -79,25 +80,36 @@ namespace AutoStockTransaction
         /// </summary>
         /// <param name="neededUpdateList">The needed update list.</param>
         /// <returns></returns>
-        private async Task<ConcurrentStack<List<HistoryPriceExtStkCode>>> GetAllStkPrice(List<ListedStock> neededUpdateList, IProgress<ProgressStoreStructure> progress)
+        private async Task<ConcurrentStack<List<HistoryPriceExtStkCode>>> GetAllStkPrice(List<string> neededUpdateList, IProgress<ProgressStoreStructure> progress)
         {
             ConcurrentStack<List<HistoryPriceExtStkCode>> allStkPrice = new ConcurrentStack<List<HistoryPriceExtStkCode>>();
             await Task.Run(() =>
             {
-                Parallel.ForEach(neededUpdateList, new ParallelOptions { MaxDegreeOfParallelism = 1 }, aStk =>
+
+                Parallel.ForEach(neededUpdateList, new ParallelOptions { MaxDegreeOfParallelism = 3 }, aStk =>
                 {
-                    List<HistoryPriceExtStkCode> aHistoryPriceList = GetHistoricalPrice(aStk.StkCode, DateTime.Now.AddMonths(-1), DateTime.Now).GetAwaiter().GetResult();
-                    allStkPrice.Push(aHistoryPriceList);
-                    var p = new ProgressStoreStructure()
+                    var RptState = new ProgressStoreStructure();
+                    List<HistoryPriceExtStkCode> aHistoryPriceList = GetHistoricalPrice(aStk + ".TW", DateTime.Now.AddYears(-20), DateTime.Now).GetAwaiter().GetResult();
+                    if (aHistoryPriceList.Count < 1)
                     {
-                        GetProgressOnAllPriceLists = (float)allStkPrice.Count / totalStkAmount * 100
-                    };
-                    if(aHistoryPriceList.Count < 2)
-                    {
-                        errorStkAmount += 1;
-                        p.ErrorStkCode = $"{aStk.StkCode}   {errorStkAmount}";
+                        List<HistoryPriceExtStkCode> tryCatchHistoryPriceListAgain = GetHistoricalPrice(aStk + ".TWO", DateTime.Now.AddYears(-20), DateTime.Now).GetAwaiter().GetResult();
+                        if (tryCatchHistoryPriceListAgain.Count < 1)
+                        {
+                            errorStkAmount++;
+                            RptState.ErrorStkCode = $"{aStk}   {errorStkAmount}";
+                        }
+                        else
+                        {
+                            allStkPrice.Push(tryCatchHistoryPriceListAgain);
+                        }
                     }
-                    progress.Report(p);
+                    else
+                    {
+                        allStkPrice.Push(aHistoryPriceList);
+                    }
+                    RptState.GetProgressOnAllPriceLists = (float)(allStkPrice.Count - errorStkAmount) / totalStkAmount * 100;
+                    progress.Report(RptState);
+
                 });
             });
 
@@ -117,12 +129,12 @@ namespace AutoStockTransaction
             {
                 await Token.RefreshAsync().ConfigureAwait(false);
             }
-            List<HistoryPrice> hps = await Historical.GetPriceAsync((symbol + ".TW"), start, end).ConfigureAwait(false);
-            //Historyprice轉換成HistoryPriceExtStkCode類型, 新增StkCode後傳回
+            List<HistoryPrice> hps = await Historical.GetPriceAsync(symbol, start, end).ConfigureAwait(false);
+            //Historyprice轉換為HistoryPriceExtStkCode類型, 新增StkCode後傳回
             List<HistoryPriceExtStkCode> hpExtList = new List<HistoryPriceExtStkCode>();
             foreach (HistoryPrice hp in hps)
             {
-                HistoryPriceExtStkCode hpExt = new HistoryPriceExtStkCode()
+                hpExtList.Add(new HistoryPriceExtStkCode()
                 {
                     Stkcode = symbol,
                     Date = hp.Date,
@@ -132,12 +144,15 @@ namespace AutoStockTransaction
                     Close = hp.Close,
                     AdjClose = hp.AdjClose,
                     Volume = hp.Volume
-                };
-                hpExtList.Add(hpExt);
+                });
             }
             return hpExtList;
         }
     }
+    /// <summary>
+    /// 擴展StkCode屬性至HistroyPrice類別
+    /// </summary>
+    /// <seealso cref="YahooFinanceAPI.Models.HistoryPrice" />
     public class HistoryPriceExtStkCode : HistoryPrice
     {
         public string Stkcode;

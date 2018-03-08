@@ -24,5 +24,10 @@ namespace AutoStockTransaction
         public double Volume { get; set; }
     
         public virtual ListedStock ListedStock { get; set; }
+
+        public static implicit operator List<object>(StockHistoricalPrice v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
