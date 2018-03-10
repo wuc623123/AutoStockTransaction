@@ -16,10 +16,12 @@ namespace AutoStockTransaction
         public DBconnection()
         {
             Initialization init = new Initialization();
-            SqlConnectionStringBuilder sqlConBuild = new SqlConnectionStringBuilder();
-            sqlConBuild.DataSource = $"{init.ServerIP}";
-            sqlConBuild.UserID = $"{init.User}";
-            sqlConBuild.Password = $"{init.Password}";
+            SqlConnectionStringBuilder sqlConBuild = new SqlConnectionStringBuilder
+            {
+                DataSource = $"{init.ServerIP}",
+                UserID = $"{init.User}",
+                Password = $"{init.Password}"
+            };
             connString = sqlConBuild.ConnectionString;
             conn = new SqlConnection(connString);
         }

@@ -100,6 +100,10 @@
     <Compile Include="StockHistoricalPrice.cs">
       <DependentUpon>StockEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>StockEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TechAnalysis.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

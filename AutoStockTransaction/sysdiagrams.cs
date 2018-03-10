@@ -12,17 +12,12 @@ namespace AutoStockTransaction
     using System;
     using System.Collections.Generic;
     
-    public partial class StockHistoricalPrice
+    public partial class sysdiagrams
     {
-        public string StkCode { get; set; }
-        public System.DateTime Date { get; set; }
-        public double OpenPrice { get; set; }
-        public double HighPrice { get; set; }
-        public double LowPrice { get; set; }
-        public double ClosePrice { get; set; }
-        public double AdjustedClosePrice { get; set; }
-        public double Volume { get; set; }
-    
-        public virtual ListedStock ListedStock { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

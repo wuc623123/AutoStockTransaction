@@ -125,8 +125,8 @@ namespace AutoStockTransaction
                         int rowNumber = 4;
                         //因第一行包含ID與NAME，在這裡將他們分開
                         string[] text = compareData.Split('　');
-                        id = text[0];
-                        name = text[1];
+                        id = text[0].Trim();
+                        name = text[1].Trim();
                         //儲存第一行分開後的資料，ID與NAME
                         StockData sd = new StockData();
                         sd.SetData(InputCategory, (int)StockData.FieldName.StkCategory);
@@ -168,8 +168,12 @@ namespace AutoStockTransaction
         {
             using (StockEntities se = new StockEntities())
             {
+                var deleteData = from ls in se.ListedStock
+                                 select ls;
+                se.ListedStock.RemoveRange(deleteData);
+                se.SaveChanges();
+
                 List<ListedStock> stockList = new List<ListedStock>();
-                
                 //將自訂類別轉換成ListedStock類別
                 foreach (StockData sd in stockDataCollection)
                 {
@@ -196,9 +200,7 @@ namespace AutoStockTransaction
                     }
                 }
                 se.ListedStock.AddRange(stockList);
-                AST.Start();
                 se.SaveChanges();
-                AST.Stop();
             };
         }
     }
