@@ -87,26 +87,13 @@ namespace AutoStockTransaction
                 if (percentOfProgress.ErrorStkCode != null)
                 {
                     listBox1.Items.Add(percentOfProgress.ErrorStkCode);
+                    listBox1.SelectedIndex = listBox1.Items.Count - 1;
                 }
             }
         }
         void RptProcessTime(string processTime)
         {
             listBox1.Items.Add(processTime);
-        }
-        private async Task InsertAsync()
-        {
-            CatchHistoricalPrice CHP = new CatchHistoricalPrice();
-            var l = await CHP.GetHistoricalPrice("1101", ".TW", DateTime.Now.AddDays(-1), DateTime.Now.Date);
-            foreach (StockHistoricalPrice shp in l)
-            {
-                listBox1.Items.Add(shp);
-            }
-            using (StockEntities se = new StockEntities())
-            {
-                se.BulkInsert(l);
-                se.BulkSaveChanges();
-            }
         }
     }
 }

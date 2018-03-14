@@ -3,24 +3,14 @@
     public class StockData
     {
         //股票基礎訊息結構
-        private int intStkCategory;
-
-        private string strStkCode = null;
-        private string strStkName = null;
-        private string strISIN_code = null;
-        private string strSubmitDate = null;
-        private string strMarketNo = null;
-        private string strBelongClass = null;
-        private string strCFI_code = null;
-
-        public int IntStkCategory { get => intStkCategory; set => intStkCategory = value; }
-        public string StrStkCode { get => strStkCode; set => strStkCode = value; }
-        public string StrStkName { get => strStkName; set => strStkName = value; }
-        public string StrISIN_code { get => strISIN_code; set => strISIN_code = value; }
-        public string StrSubmitDate { get => strSubmitDate; set => strSubmitDate = value; }
-        public string StrMarketNo { get => strMarketNo; set => strMarketNo = value; }
-        public string StrBelongClass { get => strBelongClass; set => strBelongClass = value; }
-        public string StrCFI_code { get => strCFI_code; set => strCFI_code = value; }
+        public int IntStkCategory { get; set; }
+        public string StrStkCode { get; set; }
+        public string StrStkName { get; set; }
+        public string StrISIN_code { get; set; }
+        public string StrSubmitDate { get; set; }
+        public string StrMarketNo { get; set; }
+        public string StrBelongClass { get; set; }
+        public string StrCFI_code { get; set; }
 
         public enum StkCategory
         {
@@ -56,35 +46,35 @@
             switch (fieldName)
             {
                 case 1:
-                    this.intStkCategory = (int)data;
+                    this.IntStkCategory = (int)data;
                     break;
 
                 case 2:
-                    this.strStkCode = (string)data;
+                    this.StrStkCode = (string)data;
                     break;
 
                 case 3:
-                    this.strStkName = (string)data;
+                    this.StrStkName = (string)data;
                     break;
 
                 case 4:
-                    this.strISIN_code = (string)data;
+                    this.StrISIN_code = (string)data;
                     break;
 
                 case 5:
-                    this.strSubmitDate = (string)data;
+                    this.StrSubmitDate = (string)data;
                     break;
 
                 case 6:
-                    this.strMarketNo = (string)data;
+                    this.StrMarketNo = (string)data;
                     break;
 
                 case 7:
-                    this.strBelongClass = (string)data;
+                    this.StrBelongClass = (string)data;
                     break;
 
                 case 8:
-                    this.strCFI_code = (string)data;
+                    this.StrCFI_code = (string)data;
                     break;
             }
         }

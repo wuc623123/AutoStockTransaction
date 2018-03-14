@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="StockModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="StockModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ListedStock">
           <Key>
             <PropertyRef Name="StkCode" />
@@ -28,7 +28,6 @@
             <PropertyRef Name="HighPrice" />
             <PropertyRef Name="LowPrice" />
             <PropertyRef Name="ClosePrice" />
-            <PropertyRef Name="AdjustedClosePrice" />
             <PropertyRef Name="Volume" />
           </Key>
           <Property Name="StkCode" Type="varchar" MaxLength="20" Nullable="false" />
@@ -37,7 +36,6 @@
           <Property Name="HighPrice" Type="float" Nullable="false" />
           <Property Name="LowPrice" Type="float" Nullable="false" />
           <Property Name="ClosePrice" Type="float" Nullable="false" />
-          <Property Name="AdjustedClosePrice" Type="float" Nullable="false" />
           <Property Name="Volume" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -73,7 +71,6 @@
     [StockHistoricalPrice].[HighPrice] AS [HighPrice], 
     [StockHistoricalPrice].[LowPrice] AS [LowPrice], 
     [StockHistoricalPrice].[ClosePrice] AS [ClosePrice], 
-    [StockHistoricalPrice].[AdjustedClosePrice] AS [AdjustedClosePrice], 
     [StockHistoricalPrice].[Volume] AS [Volume]
     FROM [dbo].[StockHistoricalPrice] AS [StockHistoricalPrice]</DefiningQuery>
           </EntitySet>
@@ -82,8 +79,7 @@
             <End Role="StockHistoricalPrice" EntitySet="StockHistoricalPrice" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="StockModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -119,7 +115,6 @@
             <PropertyRef Name="HighPrice" />
             <PropertyRef Name="LowPrice" />
             <PropertyRef Name="ClosePrice" />
-            <PropertyRef Name="AdjustedClosePrice" />
             <PropertyRef Name="Volume" />
           </Key>
           <Property Name="StkCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
@@ -128,7 +123,6 @@
           <Property Name="HighPrice" Type="Double" Nullable="false" />
           <Property Name="LowPrice" Type="Double" Nullable="false" />
           <Property Name="ClosePrice" Type="Double" Nullable="false" />
-          <Property Name="AdjustedClosePrice" Type="Double" Nullable="false" />
           <Property Name="Volume" Type="Double" Nullable="false" />
           <NavigationProperty Name="ListedStock" Relationship="Self.FK_StockHistoricalPrice_ListedStock" FromRole="StockHistoricalPrice" ToRole="ListedStock" />
         </EntityType>
@@ -193,7 +187,6 @@
                 <ScalarProperty Name="HighPrice" ColumnName="HighPrice" />
                 <ScalarProperty Name="LowPrice" ColumnName="LowPrice" />
                 <ScalarProperty Name="ClosePrice" ColumnName="ClosePrice" />
-                <ScalarProperty Name="AdjustedClosePrice" ColumnName="AdjustedClosePrice" />
                 <ScalarProperty Name="Volume" ColumnName="Volume" />
               </MappingFragment>
             </EntityTypeMapping>

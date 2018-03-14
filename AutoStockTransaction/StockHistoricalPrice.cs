@@ -20,7 +20,6 @@ namespace AutoStockTransaction
         public double HighPrice { get; set; }
         public double LowPrice { get; set; }
         public double ClosePrice { get; set; }
-        public double AdjustedClosePrice { get; set; }
         public double Volume { get; set; }
     
         public virtual ListedStock ListedStock { get; set; }

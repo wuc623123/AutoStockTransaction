@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Trady.Importer;
+using Trady.Core;
 using YahooFinanceAPI;
 using YahooFinanceAPI.Models;
-
-
 
 namespace AutoStockTransaction
 {
@@ -78,25 +78,31 @@ namespace AutoStockTransaction
                 Parallel.ForEach(neededUpdateList, new ParallelOptions { MaxDegreeOfParallelism = 3 }, aStk =>
                 {
                     var RptState = new ProgressStoreStructure();
-                    List<StockHistoricalPrice> aHistoryPriceList = GetHistoricalPrice(aStk, ".TW", DateTime.Now.AddYears(-20), DateTime.Now).GetAwaiter().GetResult();
-                    if (aHistoryPriceList.Count < 1)
+                    List<StockHistoricalPrice> aYahooHistoryPriceList = YahooGetHistoricalPrice(".TW", aStk, DateTime.Now.AddYears(-20), DateTime.Now).GetAwaiter().GetResult();
+                    if (aYahooHistoryPriceList.Count < 5)
                     {
-                        List<StockHistoricalPrice> tryCatchHistoryPriceListAgain = GetHistoricalPrice(aStk, ".TWO", DateTime.Now.AddYears(-20), DateTime.Now).GetAwaiter().GetResult();
-                        if (tryCatchHistoryPriceListAgain.Count < 1)
+                        List<StockHistoricalPrice> tryYahooCatchHistoryPriceList = YahooGetHistoricalPrice(".TWO", aStk, DateTime.Now.AddYears(-20), DateTime.Now).GetAwaiter().GetResult();
+                        if (tryYahooCatchHistoryPriceList.Count < 5)
                         {
-                            errorStkAmount++;
-                            RptState.ErrorStkCode = $"{aStk}  {errorStkAmount}";
+                            List<StockHistoricalPrice> tryGoogleCatchHistoryPriceList = GoogleGetHistoricalPrice("TPE/", aStk, DateTime.Now.AddYears(-20), DateTime.Now).GetAwaiter().GetResult();
+                            if(tryGoogleCatchHistoryPriceList.Count < 5)
+                            {
+                                errorStkAmount++;
+                                RptState.ErrorStkCode = $"失敗{aStk}  {errorStkAmount}";
+                            }
+                            else
+                            {
+                                allStkPrice.Push(tryGoogleCatchHistoryPriceList);
+                            }
                         }
                         else
                         {
-                            RptState.ErrorStkCode = $"{aStk}  {tryCatchHistoryPriceListAgain.Count}";
-                            allStkPrice.Push(tryCatchHistoryPriceListAgain);
+                            allStkPrice.Push(tryYahooCatchHistoryPriceList);
                         }
                     }
                     else
                     {
-                        RptState.ErrorStkCode = $"{aStk}  {aHistoryPriceList.Count}";
-                        allStkPrice.Push(aHistoryPriceList);
+                        allStkPrice.Push(aYahooHistoryPriceList);
                     }
                     RptState.GetProgressOnAllPriceLists = (float)allStkPrice.Count / (totalStkAmount - errorStkAmount) * 100;
                     progress.Report(RptState);
@@ -113,7 +119,7 @@ namespace AutoStockTransaction
         /// <param name="start">The start Datetime.</param>
         /// <param name="end">The end Datetime.</param>
         /// <returns></returns>
-        public async Task<List<StockHistoricalPrice>> GetHistoricalPrice(string symbol, string symbolType, DateTime start, DateTime end)
+        public async Task<List<StockHistoricalPrice>> YahooGetHistoricalPrice(string symbolType, string symbol, DateTime start, DateTime end)
         {
             //first get a valid token from Yahoo Finance
             while (string.IsNullOrEmpty(Token.Cookie) || string.IsNullOrEmpty(Token.Crumb))
@@ -122,10 +128,10 @@ namespace AutoStockTransaction
             }
             List<HistoryPrice> hps = await Historical.GetPriceAsync(symbol + symbolType, start, end).ConfigureAwait(false);
             //Historyprice轉換為HistoryPriceExtStkCode類型, 新增StkCode後傳回
-            List<StockHistoricalPrice> hpExtList = new List<StockHistoricalPrice>();
+            List<StockHistoricalPrice> shpList = new List<StockHistoricalPrice>();
             foreach (HistoryPrice hp in hps)
             {
-                hpExtList.Add(new StockHistoricalPrice()
+                shpList.Add(new StockHistoricalPrice()
                 {
                     StkCode = symbol,
                     Date = hp.Date,
@@ -133,11 +139,32 @@ namespace AutoStockTransaction
                     HighPrice = hp.High,
                     LowPrice = hp.Low,
                     ClosePrice = hp.Close,
-                    AdjustedClosePrice = hp.AdjClose,
                     Volume = hp.Volume
                 });
             }
-            return hpExtList;
+            return shpList;
+        }
+        public async Task<List<StockHistoricalPrice>> GoogleGetHistoricalPrice(string symbolType, string symbol, DateTime start, DateTime end)
+        {
+            //first get a valid token from Yahoo Finance
+            var importerHistorical = new GoogleFinanceImporter();
+            IReadOnlyList<Candle> candles = await importerHistorical.ImportAsync(symbolType + symbol, start, end);
+            //Historyprice轉換為HistoryPriceExtStkCode類型, 新增StkCode後傳回
+            List<StockHistoricalPrice> shpList = new List<StockHistoricalPrice>();
+            foreach (Candle candle in candles)
+            {
+                shpList.Add(new StockHistoricalPrice()
+                {
+                    StkCode = symbol,
+                    Date = candle.DateTime,
+                    OpenPrice = (double)candle.Open,
+                    HighPrice = (double)candle.High,
+                    LowPrice = (double)candle.Low,
+                    ClosePrice = (double)candle.Close,
+                    Volume = (double)candle.Volume
+                });
+            }
+            return shpList;
         }
     }
 }
