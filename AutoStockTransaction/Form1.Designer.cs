@@ -30,15 +30,17 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.資料庫ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.帳號ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.統計ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.更新股票代碼ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.自動更新股票歷史價格ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.技術分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.帳號ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帳號登入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.統計ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.個股買賣點ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -60,24 +62,11 @@
             // 
             this.資料庫ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.更新股票代碼ToolStripMenuItem,
-            this.自動更新股票歷史價格ToolStripMenuItem});
+            this.自動更新股票歷史價格ToolStripMenuItem,
+            this.技術分析ToolStripMenuItem});
             this.資料庫ToolStripMenuItem.Name = "資料庫ToolStripMenuItem";
             this.資料庫ToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.資料庫ToolStripMenuItem.Text = "資料庫";
-            // 
-            // 帳號ToolStripMenuItem
-            // 
-            this.帳號ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.帳號登入ToolStripMenuItem});
-            this.帳號ToolStripMenuItem.Name = "帳號ToolStripMenuItem";
-            this.帳號ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.帳號ToolStripMenuItem.Text = "帳號";
-            // 
-            // 統計ToolStripMenuItem
-            // 
-            this.統計ToolStripMenuItem.Name = "統計ToolStripMenuItem";
-            this.統計ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.統計ToolStripMenuItem.Text = "統計";
             // 
             // 更新股票代碼ToolStripMenuItem
             // 
@@ -93,11 +82,40 @@
             this.自動更新股票歷史價格ToolStripMenuItem.Text = "自動更新股票歷史價格";
             this.自動更新股票歷史價格ToolStripMenuItem.Click += new System.EventHandler(this.自動更新股票歷史價格ToolStripMenuItem_Click);
             // 
+            // 技術分析ToolStripMenuItem
+            // 
+            this.技術分析ToolStripMenuItem.Name = "技術分析ToolStripMenuItem";
+            this.技術分析ToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.技術分析ToolStripMenuItem.Text = "技術分析";
+            this.技術分析ToolStripMenuItem.Click += new System.EventHandler(this.技術分析ToolStripMenuItem_ClickAsync);
+            // 
+            // 帳號ToolStripMenuItem
+            // 
+            this.帳號ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.帳號登入ToolStripMenuItem});
+            this.帳號ToolStripMenuItem.Name = "帳號ToolStripMenuItem";
+            this.帳號ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.帳號ToolStripMenuItem.Text = "帳號";
+            // 
             // 帳號登入ToolStripMenuItem
             // 
             this.帳號登入ToolStripMenuItem.Name = "帳號登入ToolStripMenuItem";
-            this.帳號登入ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.帳號登入ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.帳號登入ToolStripMenuItem.Text = "帳號登入";
+            // 
+            // 統計ToolStripMenuItem
+            // 
+            this.統計ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.個股買賣點ToolStripMenuItem});
+            this.統計ToolStripMenuItem.Name = "統計ToolStripMenuItem";
+            this.統計ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.統計ToolStripMenuItem.Text = "統計";
+            // 
+            // 個股買賣點ToolStripMenuItem
+            // 
+            this.個股買賣點ToolStripMenuItem.Name = "個股買賣點ToolStripMenuItem";
+            this.個股買賣點ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.個股買賣點ToolStripMenuItem.Text = "個股買賣點";
             // 
             // tabControl1
             // 
@@ -120,6 +138,16 @@
             this.tabPage1.Text = "執行狀態";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // listBox1
+            // 
+            this.listBox1.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(0, 0);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(473, 388);
+            this.listBox1.TabIndex = 0;
+            // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -129,15 +157,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(0, 0);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(473, 388);
-            this.listBox1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -171,6 +190,8 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.ToolStripMenuItem 技術分析ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 個股買賣點ToolStripMenuItem;
     }
 }
 

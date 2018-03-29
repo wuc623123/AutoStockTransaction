@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,21 +17,28 @@ namespace AutoStockTransaction
         private List<StockData> stockDataCollection = new List<StockData>();
         Stopwatch RST = new Stopwatch();
         Stopwatch AST = new Stopwatch();
+        Stopwatch DataTransformTime = new Stopwatch();
+        Stopwatch CatchTime = new Stopwatch();
+        Stopwatch WrittingDBTime = new Stopwatch();
         public async Task MultiCatch(IProgress<int> progress, IProgress<string> processTime)
         {
             Initialization init = new Initialization();
+            CatchTime.Start();
             foreach (string strUrl in init.ListStkUrl)
             {
                 Catch(strUrl, progress);
             }
+            CatchTime.Stop();
+            WrittingDBTime.Start();
             WriteToDB(processTime);
+            WrittingDBTime.Stop();
             if (processTime != null)
             {
-                //processTime.Report($"RemoveRangeTime:{RT.ElapsedMilliseconds}");
-                //processTime.Report($"SaveChanges(Remove):{SCT.ElapsedMilliseconds}");
-                //processTime.Report($"DataMove:{MS.ElapsedMilliseconds}");
-                processTime.Report($"SaveChanges(Remove):{RST.ElapsedMilliseconds}");
-                processTime.Report($"SaveChanges(Add):{AST.ElapsedMilliseconds}");
+                processTime.Report($"CatchTime:{CatchTime.ElapsedMilliseconds}");
+                processTime.Report($"WrittingDBTime:{WrittingDBTime.ElapsedMilliseconds}");
+                processTime.Report($"DataTransformTime:{DataTransformTime.ElapsedMilliseconds}");
+                processTime.Report($"BulkSaveChanges(Remove):{RST.ElapsedMilliseconds}");
+                processTime.Report($"BulkSaveChanges(Add):{AST.ElapsedMilliseconds}");
             }
         }
 
@@ -168,11 +176,13 @@ namespace AutoStockTransaction
         {
             using (StockEntities se = new StockEntities())
             {
+
                 var deleteData = from ls in se.ListedStock
                                  select ls;
-                se.ListedStock.RemoveRange(deleteData);
-                se.SaveChanges();
-
+                RST.Start();
+                se.BulkDelete(deleteData);
+                RST.Stop();
+                DataTransformTime.Start();
                 List<ListedStock> stockList = new List<ListedStock>();
                 //將自訂類別轉換成ListedStock類別
                 foreach (StockData sd in stockDataCollection)
@@ -191,17 +201,33 @@ namespace AutoStockTransaction
                     stockList.Add(stock);
                 }
                 //如果找不到重複的主鍵，便加入到儲存列表中
-                foreach (ListedStock stock in stockList)
+                List<ListedStock> allStkInDB = (from stk in se.ListedStock
+                                                orderby stk.StkCategory, stk.StkCode
+                                                select stk).ToList();
+                List<ListedStock> neededWrittingStockList = new List<ListedStock>();
+                //剔除已經在資料庫內的StkCode
+                foreach (ListedStock incomeStk in stockList)
                 {
-                    ListedStock sameStkCode = se.ListedStock.Where(x => x.StkCode == stock.StkCode).Select(x => x).FirstOrDefault();
-                    if (sameStkCode == null)
+                    Boolean match = false;
+                    foreach (ListedStock dbStk in allStkInDB)
                     {
-                        se.ListedStock.Add(stock);
+                        if (incomeStk.StkCode == dbStk.StkCode)
+                        {
+                            match = true;
+                        }
+                    }
+                    if (!match)
+                    {
+                        neededWrittingStockList.Add(incomeStk);
                     }
                 }
-                se.ListedStock.AddRange(stockList);
-                se.SaveChanges();
+                DataTransformTime.Stop();
+                AST.Start();
+                se.BulkInsert(neededWrittingStockList);
+                se.BulkSaveChanges();
+                AST.Stop();
             };
         }
+        //private static readonly Func<StockEntities, int, ListedStock> CompiledQueryGetStkCode = CompiledQuery.Compile<StockEntities, int, ListedStock>((se, id) => );
     }
 }

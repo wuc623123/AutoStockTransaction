@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace AutoStockTransaction
 {
-    class ProgressStoreStructure
+    class RptStructure
     {
         public double GetProgressOnAllPriceLists { get; set; }
         public double GetProgressOnWrittingDB { get; set; }
         public string ErrorStkCode { get; set; }
+        public string AnalysisData { get; set; }
     }
 }

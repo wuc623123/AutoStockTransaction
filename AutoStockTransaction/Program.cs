@@ -1,23 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
 
 namespace AutoStockTransaction
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// 應用程式的主要進入點。
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            Z.EntityFramework.Extensions.LicenseManager.AddLicense("73; 100 - RUSS", "0F3F1086D99A2D274D6E5FBB4AF9002D");
         }
     }
 }

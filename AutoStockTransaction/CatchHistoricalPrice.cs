@@ -15,7 +15,7 @@ namespace AutoStockTransaction
     {
         int totalStkAmount = 0;
         int errorStkAmount = 0;
-        public async Task UpdatePriceToDB(IProgress<ProgressStoreStructure> progress)
+        public async Task UpdatePriceToDB(IProgress<RptStructure> progress)
         {
             using (StockEntities se = new StockEntities())
             {
@@ -28,12 +28,11 @@ namespace AutoStockTransaction
             ConcurrentStack<List<StockHistoricalPrice>> allStkPrice = await GetAllStkPrice(neededUpdateList, progress);
             using (StockEntities se = new StockEntities())
             {
-
                 //新增所有缺少記錄的價格資料
                 int index = 0;
                 foreach (List<StockHistoricalPrice> priceOfList in allStkPrice)
                 {
-                    var RptProgress = new ProgressStoreStructure();
+                    var RptProgress = new RptStructure();
                     se.BulkInsert(priceOfList);
                     se.BulkSaveChanges();
                     RptProgress.GetProgressOnWrittingDB = (float)++index / allStkPrice.Count * 100;
@@ -70,14 +69,14 @@ namespace AutoStockTransaction
         /// </summary>
         /// <param name="neededUpdateList">The needed update list.</param>
         /// <returns></returns>
-        private async Task<ConcurrentStack<List<StockHistoricalPrice>>> GetAllStkPrice(List<string> neededUpdateList, IProgress<ProgressStoreStructure> progress)
+        private async Task<ConcurrentStack<List<StockHistoricalPrice>>> GetAllStkPrice(List<string> neededUpdateList, IProgress<RptStructure> progress)
         {
             ConcurrentStack<List<StockHistoricalPrice>> allStkPrice = new ConcurrentStack<List<StockHistoricalPrice>>();
             await Task.Run(() =>
             {
                 Parallel.ForEach(neededUpdateList, new ParallelOptions { MaxDegreeOfParallelism = 3 }, aStk =>
                 {
-                    var RptState = new ProgressStoreStructure();
+                    var RptState = new RptStructure();
                     List<StockHistoricalPrice> aYahooHistoryPriceList = YahooGetHistoricalPrice(".TW", aStk, DateTime.Now.AddYears(-20), DateTime.Now).GetAwaiter().GetResult();
                     if (aYahooHistoryPriceList.Count < 5)
                     {
@@ -135,10 +134,10 @@ namespace AutoStockTransaction
                 {
                     StkCode = symbol,
                     Date = hp.Date,
-                    OpenPrice = hp.Open,
-                    HighPrice = hp.High,
-                    LowPrice = hp.Low,
-                    ClosePrice = hp.Close,
+                    OpenPrice = (decimal)hp.Open,
+                    HighPrice = (decimal)hp.High,
+                    LowPrice = (decimal)hp.Low,
+                    ClosePrice = (decimal)hp.Close,
                     Volume = hp.Volume
                 });
             }
@@ -157,10 +156,10 @@ namespace AutoStockTransaction
                 {
                     StkCode = symbol,
                     Date = candle.DateTime,
-                    OpenPrice = (double)candle.Open,
-                    HighPrice = (double)candle.High,
-                    LowPrice = (double)candle.Low,
-                    ClosePrice = (double)candle.Close,
+                    OpenPrice = (decimal)candle.Open,
+                    HighPrice = (decimal)candle.High,
+                    LowPrice = (decimal)candle.Low,
+                    ClosePrice = (decimal)candle.Close,
                     Volume = (double)candle.Volume
                 });
             }

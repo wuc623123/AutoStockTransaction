@@ -22,7 +22,7 @@ namespace AutoStockTransaction
                 ServerIP = oCINI.GetKeyValue("DB_connection_config", "serverIP");
                 User = oCINI.GetKeyValue("DB_connection_config", "user");
                 Password = oCINI.GetKeyValue("DB_connection_config", "password");
-                ListStkUrl = oCINI.GetKeyValue("Stock_TWSE_Declaration", "stkUrl").Split(',');
+                ListStkUrl = oCINI.GetKeyValue("Stock_TWSE_Declaration", "stkUrl").Split(';');
             }
         }
     }
