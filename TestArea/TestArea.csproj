@@ -49,40 +49,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Trady-master\Trady.Analysis\Trady.Analysis.csproj">
-      <Project>{164c4731-c6a3-41a6-8c32-88f55db4d5c2}</Project>
-      <Name>Trady.Analysis</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Trady-master\Trady.Core\Trady.Core.csproj">
-      <Project>{4c37b65d-3423-4679-836e-98db29b0fe07}</Project>
-      <Name>Trady.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Trady-master\Trady.Importer.Csv\Trady.Importer.Csv.csproj">
-      <Project>{68256547-a3cc-43b8-be34-c8faccee20f3}</Project>
-      <Name>Trady.Importer.Csv</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Trady-master\Trady.Importer.Google\Trady.Importer.Google.csproj">
-      <Project>{40e46e14-26c2-4b5d-8ea4-d1be279c6982}</Project>
-      <Name>Trady.Importer.Google</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Trady-master\Trady.Importer.Quandl\Trady.Importer.Quandl.csproj">
-      <Project>{3b1d9b8a-4edf-41da-999c-68fa122b1a51}</Project>
-      <Name>Trady.Importer.Quandl</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Trady-master\Trady.Importer.Stooq\Trady.Importer.Stooq.csproj">
-      <Project>{be178fe7-dbbc-428a-846f-ff840abf1db2}</Project>
-      <Name>Trady.Importer.Stooq</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Trady-master\Trady.Importer.Yahoo\Trady.Importer.Yahoo.csproj">
-      <Project>{7053d9a6-8793-4080-af15-13cc24e2b8fd}</Project>
-      <Name>Trady.Importer.Yahoo</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Trady-master\Trady.Importer\Trady.Importer.csproj">
-      <Project>{5bee518c-42e4-4221-87c8-1ad18225e87b}</Project>
-      <Name>Trady.Importer</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
