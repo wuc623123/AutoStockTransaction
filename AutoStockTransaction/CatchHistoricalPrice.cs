@@ -52,7 +52,6 @@ namespace AutoStockTransaction
                 //SE.Configuration.LazyLoadingEnabled = true;
                 //取得category = 1所有項目的列表
                 IQueryable<string> stkCodeListInCat1 = from s in SE.ListedStock
-
                                                        where s.StkCategory == 1
                                                        select s.StkCode;
                 ////取得股票價格所有項目的列表
