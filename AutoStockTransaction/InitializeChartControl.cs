@@ -8,6 +8,6 @@ namespace AutoStockTransaction
 {
     class InitializeChartControl
     {
-        public 
+
     }
 }

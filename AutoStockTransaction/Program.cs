@@ -11,10 +11,14 @@ namespace AutoStockTransaction
         [STAThread]
         private static void Main()
         {
+            //entity framework extensions3.12.10破解
+            string licenseName = "41;100-DZB";//... PRO license name
+            string licenseKey = "60200499171A9676A68AC7DBBDA8C0E2";//... PRO license key
+            Z.EntityFramework.Extensions.LicenseManager.AddLicense(licenseName, licenseKey);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-            Z.EntityFramework.Extensions.LicenseManager.AddLicense("73; 100 - RUSS", "0F3F1086D99A2D274D6E5FBB4AF9002D");
         }
     }
 }

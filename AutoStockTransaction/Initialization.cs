@@ -3,12 +3,12 @@ using System.Windows.Forms;
 
 namespace AutoStockTransaction
 {
-    internal class Initialization
+    internal static class Initialization
     {
-        public string ServerIP { get; set; }
-        public string User { get; set; }
-        public string Password { get; set; }
-        public string[] ListStkUrl { get; set; }
+        public static string ServerIP { get; set; }
+        public static string User { get; set; }
+        public static string Password { get; set; }
+        public static string[] ListStkUrl { get; set; }
 
         public Initialization()
         {

@@ -301,8 +301,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\YahooFinanceAPI.dll</HintPath>
     </Reference>
-    <Reference Include="Z.EntityFramework.Extensions, Version=3.14.12.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
-      <HintPath>..\packages\Z.EntityFramework.Extensions.3.14.12\lib\net45\Z.EntityFramework.Extensions.dll</HintPath>
+    <Reference Include="Z.EntityFramework.Extensions, Version=3.12.10.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Z.EntityFramework.Extensions.3.12.10\lib\net45\Z.EntityFramework.Extensions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
