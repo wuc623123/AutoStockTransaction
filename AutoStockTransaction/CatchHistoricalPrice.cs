@@ -2,44 +2,49 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Trady.Importer;
 using Trady.Core;
+using Trady.Importer;
 using YahooFinanceAPI;
 using YahooFinanceAPI.Models;
 
 namespace AutoStockTransaction
 {
-    class CatchHistoricalPrice
+    internal class CatchHistoricalPrice
     {
-        int totalStkAmount = 0;
-        int errorStkAmount = 0;
+        private int totalStkAmount = 0;
+        private int errorStkAmount = 0;
+
         public async Task UpdatePriceToDB(IProgress<RptStructure> progress)
         {
             using (StockEntities se = new StockEntities())
-            {
-                //刪除所以價格資料
+            {   //刪除所以價格資料
                 se.StockHistoricalPrice.Where(shp => true).DeleteFromQuery();
             }
-            //取得stkcode差集列表
-            List<string> neededUpdateList = await GetAllNeededAddStkCode();
+            List<string> neededUpdateList = await GetAllNeededAddStkCode();//取得stkcode差集列表
             //取得所有需要新增的股票價格列表
             ConcurrentStack<List<StockHistoricalPrice>> allStkPrice = await GetAllStkPrice(neededUpdateList, progress);
             using (StockEntities se = new StockEntities())
             {
                 //新增所有缺少記錄的價格資料
                 int index = 0;
+                RptStructure RptProgress;
                 foreach (List<StockHistoricalPrice> priceOfList in allStkPrice)
                 {
-                    var RptProgress = new RptStructure();
+                    RptProgress = new RptStructure();
                     se.BulkInsert(priceOfList);
                     se.BulkSaveChanges();
-                    RptProgress.GetProgressOnWrittingDB = (float)++index / allStkPrice.Count * 100;
+                    RptProgress.WrittingDBProgress = (float)++index / allStkPrice.Count * 100;
                     progress.Report(RptProgress);
                 }
+                RptProgress = new RptStructure()
+                {
+                    CompletedMsg = "更新歷史價格完成!"
+                };
+                progress.Report(RptProgress);
             }
         }
+
         /// <summary>
         /// Gets all needed add STK code.
         /// </summary>
@@ -48,8 +53,6 @@ namespace AutoStockTransaction
         {
             using (StockEntities SE = new StockEntities())
             {
-                //SE.Configuration.ProxyCreationEnabled = true;
-                //SE.Configuration.LazyLoadingEnabled = true;
                 //取得category = 1所有項目的列表
                 IQueryable<string> stkCodeListInCat1 = from s in SE.ListedStock
                                                        where s.StkCategory == 1
@@ -83,7 +86,7 @@ namespace AutoStockTransaction
                         if (tryYahooCatchHistoryPriceList.Count < 5)
                         {
                             List<StockHistoricalPrice> tryGoogleCatchHistoryPriceList = GoogleGetHistoricalPrice("TPE/", aStk, DateTime.Now.AddYears(-20), DateTime.Now).GetAwaiter().GetResult();
-                            if(tryGoogleCatchHistoryPriceList.Count < 5)
+                            if (tryGoogleCatchHistoryPriceList.Count < 5)
                             {
                                 errorStkAmount++;
                                 RptState.ErrorStkCode = $"失敗{aStk}  {errorStkAmount}";
@@ -102,7 +105,7 @@ namespace AutoStockTransaction
                     {
                         allStkPrice.Push(aYahooHistoryPriceList);
                     }
-                    RptState.GetProgressOnAllPriceLists = (float)allStkPrice.Count / (totalStkAmount - errorStkAmount) * 100;
+                    RptState.UpdatePriceListsProgress = (float)allStkPrice.Count / (totalStkAmount - errorStkAmount) * 100;
                     progress.Report(RptState);
                 });
                 errorStkAmount = 0;
@@ -142,6 +145,7 @@ namespace AutoStockTransaction
             }
             return shpList;
         }
+
         public async Task<List<StockHistoricalPrice>> GoogleGetHistoricalPrice(string symbolType, string symbol, DateTime start, DateTime end)
         {
             //first get a valid token from Yahoo Finance

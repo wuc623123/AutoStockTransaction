@@ -15,12 +15,14 @@ namespace AutoStockTransaction
     {
         private int RptCounts = 0;
         private List<StockData> stockDataCollection = new List<StockData>();
+        RptStructure rs = new RptStructure();
         Stopwatch RST = new Stopwatch();
         Stopwatch AST = new Stopwatch();
         Stopwatch DataTransformTime = new Stopwatch();
         Stopwatch CatchTime = new Stopwatch();
         Stopwatch WrittingDBTime = new Stopwatch();
-        public async Task MultiCatch(IProgress<int> progress, IProgress<string> processTime)
+
+        public void MultiCatch(IProgress<RptStructure> progress)
         {
             Initialization init = new Initialization();
             CatchTime.Start();
@@ -30,22 +32,25 @@ namespace AutoStockTransaction
             }
             CatchTime.Stop();
             WrittingDBTime.Start();
-            WriteToDB(processTime);
+            WriteToDB();
             WrittingDBTime.Stop();
-            if (processTime != null)
+            rs.ProcessTime = new List<string>
             {
-                processTime.Report($"CatchTime:{CatchTime.ElapsedMilliseconds}");
-                processTime.Report($"WrittingDBTime:{WrittingDBTime.ElapsedMilliseconds}");
-                processTime.Report($"DataTransformTime:{DataTransformTime.ElapsedMilliseconds}");
-                processTime.Report($"BulkSaveChanges(Remove):{RST.ElapsedMilliseconds}");
-                processTime.Report($"BulkSaveChanges(Add):{AST.ElapsedMilliseconds}");
-            }
+                $"CatchTime:{CatchTime.ElapsedMilliseconds}ms",
+                $"WrittingDBTime:{WrittingDBTime.ElapsedMilliseconds}ms",
+                $"DataTransformTime:{DataTransformTime.ElapsedMilliseconds}ms",
+                $"BulkSaveChanges(Remove):{RST.ElapsedMilliseconds}ms",
+                $"BulkSaveChanges(Add):{AST.ElapsedMilliseconds}ms"
+            };
+            rs.CompletedMsg = "更新股票代碼完成!";
+            progress.Report(rs);
+
         }
 
         /// <summary>
-        /// 取得特定頁面的所有資訊，此方法必須要先執行
+        /// 取得指定網頁的所有表格資訊，此方法必須要先執行
         /// </summary>
-        public void Catch(string strUrl, IProgress<int> progress)
+        public void Catch(string strUrl,IProgress<RptStructure> progress)
         {
             HtmlAgilityPack.HtmlDocument docLoad = new HtmlAgilityPack.HtmlDocument();
             HtmlAgilityPack.HtmlDocument storeParentNode = new HtmlAgilityPack.HtmlDocument();
@@ -64,12 +69,11 @@ namespace AutoStockTransaction
             //取得成功後開始擷取
             BuildingDataStructure(storeParentNode, progress);
         }
-
         /// <summary>
         /// 將資料一一的寫入到StockData內
         /// </summary>
         /// <param name="htmldocParent">The htmldoc parent.</param>
-        public void BuildingDataStructure(HtmlAgilityPack.HtmlDocument htmldocParent, IProgress<int> progress)
+        public void BuildingDataStructure(HtmlAgilityPack.HtmlDocument htmldocParent,IProgress<RptStructure> progress)
         {
             int InputCategory = 0;
             int row = 2;
@@ -156,13 +160,14 @@ namespace AutoStockTransaction
                         //到這裡一列資料已經儲存完畢，並將StockData類別新增到stockDataCollection泛型的類別陣列
                         stockDataCollection.Add(sd);
                         //回報目前處理進度給UI
-                        if (progress != null)
+                        if (rs != null)
                         {
                             int totalPercent = (int)((row - 1) * 100 / totalColumnCount);
                             if (totalPercent != RptCounts)
                             {
-                                progress.Report(totalPercent);
+                                rs.UpdateStkCodeProgress = totalPercent;
                                 RptCounts = totalPercent;
+                                progress.Report(rs);
                             }
                         }
                         break;
@@ -172,7 +177,7 @@ namespace AutoStockTransaction
             }
         }
 
-        public void WriteToDB(IProgress<string> processTime)
+        public void WriteToDB()
         {
             using (StockEntities se = new StockEntities())
             {
@@ -228,6 +233,5 @@ namespace AutoStockTransaction
                 AST.Stop();
             };
         }
-        //private static readonly Func<StockEntities, int, ListedStock> CompiledQueryGetStkCode = CompiledQuery.Compile<StockEntities, int, ListedStock>((se, id) => );
     }
 }

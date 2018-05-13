@@ -38,6 +38,8 @@
             DevExpress.XtraCharts.CandleStickSeriesView candleStickSeriesView3 = new DevExpress.XtraCharts.CandleStickSeriesView();
             DevExpress.XtraCharts.Series series4 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.SideBySideBarSeriesView sideBySideBarSeriesView2 = new DevExpress.XtraCharts.SideBySideBarSeriesView();
+            DevExpress.XtraBars.Docking.CustomHeaderButtonImageOptions customHeaderButtonImageOptions1 = new DevExpress.XtraBars.Docking.CustomHeaderButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
             DevExpress.XtraCharts.CustomAxisLabel customAxisLabel1 = new DevExpress.XtraCharts.CustomAxisLabel();
             DevExpress.XtraCharts.XYDiagramPane xyDiagramPane1 = new DevExpress.XtraCharts.XYDiagramPane();
@@ -49,42 +51,37 @@
             DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel1 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
             DevExpress.XtraCharts.SideBySideBarSeriesView sideBySideBarSeriesView1 = new DevExpress.XtraCharts.SideBySideBarSeriesView();
             DevExpress.XtraCharts.CandleStickSeriesView candleStickSeriesView2 = new DevExpress.XtraCharts.CandleStickSeriesView();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
             this.formAssistant1 = new DevExpress.XtraBars.FormAssistant();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.bar2 = new DevExpress.XtraBars.Bar();
+            this.bar1 = new DevExpress.XtraBars.Bar();
             this.DBUpdate_barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.barListItem1 = new DevExpress.XtraBars.BarListItem();
+            this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
+            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
+            this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemSpinEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
+            this.barEditItem4 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.skinBarSubItem1 = new DevExpress.XtraBars.SkinBarSubItem();
+            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
+            this.barEditItem3 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemCheckedComboBoxEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
+            this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
+            this.barListItem2 = new DevExpress.XtraBars.BarListItem();
+            this.barHeaderItem1 = new DevExpress.XtraBars.BarHeaderItem();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.stockChartPanel = new DevExpress.XtraBars.Docking.DockPanel();
             this.controlContainer2 = new DevExpress.XtraBars.Docking.ControlContainer();
@@ -92,10 +89,10 @@
             this.panelContainer1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.stockListPanel = new DevExpress.XtraBars.Docking.DockPanel();
             this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.listBoxControl1 = new DevExpress.XtraEditors.ListBoxControl();
+            this.stockListBox = new DevExpress.XtraEditors.ListBoxControl();
             this.stateBoxPanel = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.listBoxControl2 = new DevExpress.XtraEditors.ListBoxControl();
+            this.stateListBox = new DevExpress.XtraEditors.ListBoxControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.stockChart = new DevExpress.XtraCharts.ChartControl();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -105,38 +102,13 @@
             this.barAndDockingController1 = new DevExpress.XtraBars.BarAndDockingController(this.components);
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.barCheckItem2 = new DevExpress.XtraBars.BarCheckItem();
-            this.barAndDockingController2 = new DevExpress.XtraBars.BarAndDockingController(this.components);
             this.barCheckItem3 = new DevExpress.XtraBars.BarCheckItem();
-            this.repositoryItemCheckedComboBoxEditMovingAverages = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
-            this.barCheckItem4 = new DevExpress.XtraBars.BarCheckItem();
-            this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
-            this.barManager2 = new DevExpress.XtraBars.BarManager(this.components);
-            this.barMain = new DevExpress.XtraBars.Bar();
-            this.stockBarCheckItem = new DevExpress.XtraBars.BarCheckItem();
-            this.candleStickBarCheckItem = new DevExpress.XtraBars.BarCheckItem();
-            this.volumesBarCheckItem = new DevExpress.XtraBars.BarCheckItem();
-            this.barCheckItem5 = new DevExpress.XtraBars.BarCheckItem();
-            this.barCheckItem6 = new DevExpress.XtraBars.BarCheckItem();
-            this.barCheckItem7 = new DevExpress.XtraBars.BarCheckItem();
-            this.barCheckItem8 = new DevExpress.XtraBars.BarCheckItem();
-            this.barCheckItem9 = new DevExpress.XtraBars.BarCheckItem();
-            this.barStaticItemPeriod = new DevExpress.XtraBars.BarStaticItem();
-            this.comboBoxBarEditItem = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemComboBoxPeriod = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
-            this.barCheckItemTrendLine = new DevExpress.XtraBars.BarCheckItem();
-            this.barCheckItemFibonacciArcs = new DevExpress.XtraBars.BarCheckItem();
-            this.barCheckItemFibonacciFans = new DevExpress.XtraBars.BarCheckItem();
-            this.barCheckItemFibonacciRetracement = new DevExpress.XtraBars.BarCheckItem();
-            this.barCheckItemRemoveIndicator = new DevExpress.XtraBars.BarCheckItem();
-            this.barStaticItemAdvancedIndicators = new DevExpress.XtraBars.BarStaticItem();
-            this.barEditItemAdvancedIndicators = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemCheckedComboBoxEditAdvancedIndicators = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
-            this.barAndDockingController3 = new DevExpress.XtraBars.BarAndDockingController(this.components);
-            this.barDockControl2 = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControl3 = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControl5 = new DevExpress.XtraBars.BarDockControl();
-            this.repositoryItemComboBoxRegression = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.stockChartPanel.SuspendLayout();
             this.controlContainer2.SuspendLayout();
@@ -151,10 +123,10 @@
             this.panelContainer1.SuspendLayout();
             this.stockListPanel.SuspendLayout();
             this.controlContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockListBox)).BeginInit();
             this.stateBoxPanel.SuspendLayout();
             this.dockPanel1_Container.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stateListBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stockChart)).BeginInit();
@@ -170,13 +142,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEditMovingAverages)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBoxPeriod)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEditAdvancedIndicators)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBoxRegression)).BeginInit();
             this.SuspendLayout();
             // 
             // defaultLookAndFeel1
@@ -186,8 +151,11 @@
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar1,
             this.bar2,
             this.bar3});
+            this.barManager1.Categories.AddRange(new DevExpress.XtraBars.BarManagerCategory[] {
+            new DevExpress.XtraBars.BarManagerCategory("MainBarItems", new System.Guid("7afadd80-495c-4fc3-8512-f66858a6fc38"))});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -199,29 +167,46 @@
             this.barSubItem3,
             this.barButtonItem1,
             this.barButtonItem2,
-            this.barButtonItem3});
-            this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 6;
-            this.barManager1.StatusBar = this.bar3;
+            this.barButtonItem3,
+            this.barSubItem1,
+            this.barListItem1,
+            this.skinBarSubItem1,
+            this.barEditItem1,
+            this.barEditItem2,
+            this.barEditItem3,
+            this.barSubItem4,
+            this.barListItem2,
+            this.barEditItem4,
+            this.barHeaderItem1,
+            this.barStaticItem1});
+            this.barManager1.MainMenu = this.bar1;
+            this.barManager1.MaxItemId = 17;
+            this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemSpinEdit1,
+            this.repositoryItemSpinEdit2,
+            this.repositoryItemCheckedComboBoxEdit1,
+            this.repositoryItemComboBox1});
+            this.barManager1.StatusBar = this.bar2;
             // 
-            // bar2
+            // bar1
             // 
-            this.bar2.BarName = "主功能表";
-            this.bar2.DockCol = 0;
-            this.bar2.DockRow = 0;
-            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar2.FloatLocation = new System.Drawing.Point(108, 176);
-            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.bar1.BarName = "MainBar";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.FloatLocation = new System.Drawing.Point(260, 140);
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.DBUpdate_barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3)});
-            this.bar2.OptionsBar.MultiLine = true;
-            this.bar2.OptionsBar.UseWholeRow = true;
-            this.bar2.Text = "主功能表";
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1)});
+            this.bar1.OptionsBar.UseWholeRow = true;
+            this.bar1.Text = "主功能表";
             // 
             // DBUpdate_barSubItem1
             // 
             this.DBUpdate_barSubItem1.Caption = "資料庫";
+            this.DBUpdate_barSubItem1.CategoryGuid = new System.Guid("7afadd80-495c-4fc3-8512-f66858a6fc38");
             this.DBUpdate_barSubItem1.Id = 0;
             this.DBUpdate_barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
@@ -231,6 +216,7 @@
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "更新資股票代碼";
+            this.barButtonItem1.CategoryGuid = new System.Guid("7afadd80-495c-4fc3-8512-f66858a6fc38");
             this.barButtonItem1.Id = 3;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.UpdateStkBasicallyData_BarButtonItem1_ItemClick);
@@ -238,6 +224,7 @@
             // barButtonItem2
             // 
             this.barButtonItem2.Caption = "更新股票歷史價格";
+            this.barButtonItem2.CategoryGuid = new System.Guid("7afadd80-495c-4fc3-8512-f66858a6fc38");
             this.barButtonItem2.Id = 4;
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.UpdateStkHistoricalPrice_BarButtonItem2_ItemClick);
@@ -245,6 +232,7 @@
             // barSubItem2
             // 
             this.barSubItem2.Caption = "帳號";
+            this.barSubItem2.CategoryGuid = new System.Guid("7afadd80-495c-4fc3-8512-f66858a6fc38");
             this.barSubItem2.Id = 1;
             this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
@@ -253,34 +241,103 @@
             // barButtonItem3
             // 
             this.barButtonItem3.Caption = "帳號登入";
+            this.barButtonItem3.CategoryGuid = new System.Guid("7afadd80-495c-4fc3-8512-f66858a6fc38");
             this.barButtonItem3.Id = 5;
             this.barButtonItem3.Name = "barButtonItem3";
             // 
             // barSubItem3
             // 
             this.barSubItem3.Caption = "統計";
+            this.barSubItem3.CategoryGuid = new System.Guid("7afadd80-495c-4fc3-8512-f66858a6fc38");
             this.barSubItem3.Id = 2;
             this.barSubItem3.Name = "barSubItem3";
             // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "皮膚";
+            this.barSubItem1.Id = 6;
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barListItem1)});
+            this.barSubItem1.Name = "barSubItem1";
+            // 
+            // barListItem1
+            // 
+            this.barListItem1.Caption = "barListItem1";
+            this.barListItem1.Id = 7;
+            this.barListItem1.Name = "barListItem1";
+            // 
+            // bar2
+            // 
+            this.bar2.BarName = "StatusBar";
+            this.bar2.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            this.bar2.DockCol = 0;
+            this.bar2.DockRow = 0;
+            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            this.bar2.OptionsBar.AllowQuickCustomization = false;
+            this.bar2.OptionsBar.DrawDragBorder = false;
+            this.bar2.OptionsBar.UseWholeRow = true;
+            this.bar2.Text = "狀態列";
+            // 
             // bar3
             // 
-            this.bar3.BarName = "狀態列";
-            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            this.bar3.BarName = "StockDataConfigBar";
             this.bar3.DockCol = 0;
-            this.bar3.DockRow = 0;
-            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar3.OptionsBar.AllowQuickCustomization = false;
-            this.bar3.OptionsBar.DrawDragBorder = false;
+            this.bar3.DockRow = 1;
+            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem4)});
             this.bar3.OptionsBar.UseWholeRow = true;
-            this.bar3.Text = "狀態列";
+            this.bar3.Text = "股票資料設定表";
+            // 
+            // barStaticItem1
+            // 
+            this.barStaticItem1.Caption = "顯示設定";
+            this.barStaticItem1.Id = 16;
+            this.barStaticItem1.Name = "barStaticItem1";
+            // 
+            // barEditItem2
+            // 
+            this.barEditItem2.Caption = "barEditItem2";
+            this.barEditItem2.Edit = this.repositoryItemSpinEdit2;
+            this.barEditItem2.Id = 10;
+            this.barEditItem2.Name = "barEditItem2";
+            // 
+            // repositoryItemSpinEdit2
+            // 
+            this.repositoryItemSpinEdit2.AutoHeight = false;
+            this.repositoryItemSpinEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSpinEdit2.Name = "repositoryItemSpinEdit2";
+            // 
+            // barEditItem4
+            // 
+            this.barEditItem4.Caption = "barEditItem4";
+            this.barEditItem4.Edit = this.repositoryItemComboBox1;
+            this.barEditItem4.Id = 14;
+            this.barEditItem4.Name = "barEditItem4";
+            // 
+            // repositoryItemComboBox1
+            // 
+            this.repositoryItemComboBox1.AutoHeight = false;
+            this.repositoryItemComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox1.ExportMode = DevExpress.XtraEditors.Repository.ExportMode.DisplayText;
+            this.repositoryItemComboBox1.Items.AddRange(new object[] {
+            "日",
+            "月",
+            "年"});
+            this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
+            this.repositoryItemComboBox1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 23);
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1469, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(1469, 52);
             // 
             // barDockControlBottom
             // 
@@ -294,17 +351,81 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 47);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 52);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 919);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 914);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1469, 47);
+            this.barDockControlRight.Location = new System.Drawing.Point(1469, 52);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 919);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 914);
+            // 
+            // skinBarSubItem1
+            // 
+            this.skinBarSubItem1.Caption = "skinBarSubItem1";
+            this.skinBarSubItem1.Id = 8;
+            this.skinBarSubItem1.Name = "skinBarSubItem1";
+            // 
+            // barEditItem1
+            // 
+            this.barEditItem1.Caption = "barEditItem1";
+            this.barEditItem1.Edit = this.repositoryItemSpinEdit1;
+            this.barEditItem1.Id = 9;
+            this.barEditItem1.Name = "barEditItem1";
+            // 
+            // repositoryItemSpinEdit1
+            // 
+            this.repositoryItemSpinEdit1.AutoHeight = false;
+            this.repositoryItemSpinEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSpinEdit1.Name = "repositoryItemSpinEdit1";
+            // 
+            // barEditItem3
+            // 
+            this.barEditItem3.Caption = "barEditItem3";
+            this.barEditItem3.Edit = this.repositoryItemCheckedComboBoxEdit1;
+            this.barEditItem3.Id = 11;
+            this.barEditItem3.Name = "barEditItem3";
+            // 
+            // repositoryItemCheckedComboBoxEdit1
+            // 
+            this.repositoryItemCheckedComboBoxEdit1.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            this.repositoryItemCheckedComboBoxEdit1.AutoHeight = false;
+            this.repositoryItemCheckedComboBoxEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemCheckedComboBoxEdit1.ItemAutoHeight = true;
+            this.repositoryItemCheckedComboBoxEdit1.Items.AddRange(new DevExpress.XtraEditors.Controls.CheckedListBoxItem[] {
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("日", System.Windows.Forms.CheckState.Indeterminate),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("月", System.Windows.Forms.CheckState.Indeterminate),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("年", System.Windows.Forms.CheckState.Indeterminate)});
+            this.repositoryItemCheckedComboBoxEdit1.Name = "repositoryItemCheckedComboBoxEdit1";
+            this.repositoryItemCheckedComboBoxEdit1.SelectAllItemVisible = false;
+            // 
+            // barSubItem4
+            // 
+            this.barSubItem4.Caption = "barSubItem4";
+            this.barSubItem4.Id = 12;
+            this.barSubItem4.Name = "barSubItem4";
+            // 
+            // barListItem2
+            // 
+            this.barListItem2.Caption = "barListItem2";
+            this.barListItem2.Id = 13;
+            this.barListItem2.ItemClickFireMode = DevExpress.XtraBars.BarItemEventFireMode.Immediate;
+            this.barListItem2.Name = "barListItem2";
+            this.barListItem2.Strings.AddRange(new object[] {
+            "日",
+            "月",
+            "年"});
+            // 
+            // barHeaderItem1
+            // 
+            this.barHeaderItem1.Caption = "barHeaderItem1";
+            this.barHeaderItem1.Id = 15;
+            this.barHeaderItem1.Name = "barHeaderItem1";
             // 
             // dockManager1
             // 
@@ -419,10 +540,10 @@
             this.panelContainer1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.panelContainer1.FloatSize = new System.Drawing.Size(311, 243);
             this.panelContainer1.ID = new System.Guid("b296c761-42d2-4720-9e70-bf0bd4d03d74");
-            this.panelContainer1.Location = new System.Drawing.Point(0, 47);
+            this.panelContainer1.Location = new System.Drawing.Point(0, 52);
             this.panelContainer1.Name = "panelContainer1";
             this.panelContainer1.OriginalSize = new System.Drawing.Size(294, 200);
-            this.panelContainer1.Size = new System.Drawing.Size(294, 919);
+            this.panelContainer1.Size = new System.Drawing.Size(294, 914);
             this.panelContainer1.Text = "panelContainer1";
             // 
             // stockListPanel
@@ -433,64 +554,68 @@
             this.stockListPanel.ID = new System.Guid("4b907031-7170-4947-8ae0-3c14065928ef");
             this.stockListPanel.Location = new System.Drawing.Point(0, 0);
             this.stockListPanel.Name = "stockListPanel";
-            this.stockListPanel.OriginalSize = new System.Drawing.Size(294, 460);
-            this.stockListPanel.Size = new System.Drawing.Size(294, 460);
+            this.stockListPanel.OriginalSize = new System.Drawing.Size(294, 458);
+            this.stockListPanel.Size = new System.Drawing.Size(294, 457);
             this.stockListPanel.Text = "stockListPanel";
             // 
             // controlContainer1
             // 
-            this.controlContainer1.Controls.Add(this.listBoxControl1);
+            this.controlContainer1.Controls.Add(this.stockListBox);
             this.controlContainer1.Location = new System.Drawing.Point(4, 24);
             this.controlContainer1.Name = "controlContainer1";
-            this.controlContainer1.Size = new System.Drawing.Size(285, 431);
+            this.controlContainer1.Size = new System.Drawing.Size(285, 428);
             this.controlContainer1.TabIndex = 0;
             // 
-            // listBoxControl1
+            // stockListBox
             // 
-            this.listBoxControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxControl1.Location = new System.Drawing.Point(0, 0);
-            this.listBoxControl1.Name = "listBoxControl1";
-            this.listBoxControl1.Size = new System.Drawing.Size(285, 431);
-            this.listBoxControl1.TabIndex = 0;
-            this.listBoxControl1.SelectedIndexChanged += new System.EventHandler(this.ListBoxControl1_SelectedIndexChanged);
+            this.stockListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.stockListBox.Location = new System.Drawing.Point(0, 0);
+            this.stockListBox.Name = "stockListBox";
+            this.stockListBox.Size = new System.Drawing.Size(285, 428);
+            this.stockListBox.TabIndex = 0;
+            this.stockListBox.SelectedIndexChanged += new System.EventHandler(this.ListBoxControl1_SelectedIndexChanged);
             // 
             // stateBoxPanel
             // 
             this.stateBoxPanel.Controls.Add(this.dockPanel1_Container);
+            this.stateBoxPanel.CustomHeaderButtons.AddRange(new DevExpress.XtraBars.Docking2010.IButton[] {
+            new DevExpress.XtraBars.Docking.CustomHeaderButton("清除所選", true, customHeaderButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "清除所選欄位", -1, true, null, true, false, true, serializableAppearanceObject1, null, -1)});
             this.stateBoxPanel.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
             this.stateBoxPanel.FloatSize = new System.Drawing.Size(303, 105);
             this.stateBoxPanel.ID = new System.Guid("41324638-e907-4d34-9856-47083c1da1ff");
-            this.stateBoxPanel.Location = new System.Drawing.Point(0, 460);
+            this.stateBoxPanel.Location = new System.Drawing.Point(0, 457);
             this.stateBoxPanel.Name = "stateBoxPanel";
-            this.stateBoxPanel.OriginalSize = new System.Drawing.Size(294, 459);
-            this.stateBoxPanel.Size = new System.Drawing.Size(294, 459);
+            this.stateBoxPanel.OriginalSize = new System.Drawing.Size(294, 458);
+            this.stateBoxPanel.Size = new System.Drawing.Size(294, 457);
             this.stateBoxPanel.Text = "stateBoxPanel";
+            this.stateBoxPanel.CustomButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.stateBoxPanel_CustomButtonClick);
             // 
             // dockPanel1_Container
             // 
-            this.dockPanel1_Container.Controls.Add(this.listBoxControl2);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(4, 24);
+            this.dockPanel1_Container.Controls.Add(this.stateListBox);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(4, 27);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(285, 431);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(285, 426);
             this.dockPanel1_Container.TabIndex = 0;
             // 
-            // listBoxControl2
+            // stateListBox
             // 
-            this.listBoxControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxControl2.Location = new System.Drawing.Point(0, 0);
-            this.listBoxControl2.Name = "listBoxControl2";
-            this.listBoxControl2.Size = new System.Drawing.Size(285, 431);
-            this.listBoxControl2.TabIndex = 0;
+            this.stateListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.stateListBox.Location = new System.Drawing.Point(0, 0);
+            this.stateListBox.Name = "stateListBox";
+            this.stateListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.stateListBox.Size = new System.Drawing.Size(285, 426);
+            this.stateListBox.TabIndex = 0;
             // 
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.stockChart);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(294, 47);
+            this.layoutControl1.Location = new System.Drawing.Point(294, 52);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(747, 200, 650, 400);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(1175, 919);
+            this.layoutControl1.Size = new System.Drawing.Size(1175, 914);
             this.layoutControl1.TabIndex = 6;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -502,7 +627,6 @@
             this.stockChart.CrosshairOptions.ArgumentLineColor = System.Drawing.Color.White;
             this.stockChart.CrosshairOptions.ShowOnlyInFocusedPane = false;
             this.stockChart.CrosshairOptions.ValueLineColor = System.Drawing.Color.White;
-            xyDiagram1.AxisX.DateTimeScaleOptions.MeasureUnit = DevExpress.XtraCharts.DateTimeMeasureUnit.Week;
             xyDiagram1.AxisX.GridLines.MinorVisible = true;
             xyDiagram1.AxisX.GridLines.Visible = true;
             xyDiagram1.AxisX.VisibleInPanesSerializable = "0";
@@ -523,12 +647,14 @@
             xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
             xyDiagram1.AxisY.WholeRange.AlwaysShowZeroLevel = false;
             xyDiagram1.DefaultPane.Weight = 2D;
+            xyDiagram1.EnableAxisXScrolling = true;
+            xyDiagram1.EnableAxisXZooming = true;
             xyDiagram1.PaneDistance = 5;
             xyDiagramPane1.Name = "Volume Pane";
             xyDiagramPane1.PaneID = 0;
             xyDiagram1.Panes.AddRange(new DevExpress.XtraCharts.XYDiagramPane[] {
             xyDiagramPane1});
-            secondaryAxisY1.AxisID = 1;
+            secondaryAxisY1.AxisID = 0;
             secondaryAxisY1.GridLines.MinorVisible = true;
             secondaryAxisY1.GridLines.Visible = true;
             secondaryAxisY1.Label.TextPattern = "{V:F1}M";
@@ -555,7 +681,6 @@
             legend1});
             this.stockChart.Location = new System.Drawing.Point(12, 12);
             this.stockChart.Name = "stockChart";
-            this.stockChart.SelectionMode = DevExpress.XtraCharts.ElementSelectionMode.Single;
             series1.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.DateTime;
             series1.Name = "Price";
             candleStickSeriesView1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -580,7 +705,7 @@
         series2};
             this.stockChart.SeriesTemplate.View = candleStickSeriesView2;
             this.stockChart.SideBySideBarDistanceFixed = 0;
-            this.stockChart.Size = new System.Drawing.Size(1151, 895);
+            this.stockChart.Size = new System.Drawing.Size(1151, 890);
             this.stockChart.TabIndex = 6;
             // 
             // layoutControlGroup1
@@ -590,7 +715,7 @@
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1});
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1175, 919);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1175, 914);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -598,7 +723,7 @@
             this.layoutControlItem1.Control = this.stockChart;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1155, 899);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1155, 894);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -629,9 +754,9 @@
             // 
             this.barDockControl4.CausesValidation = false;
             this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControl4.Location = new System.Drawing.Point(1469, 47);
+            this.barDockControl4.Location = new System.Drawing.Point(1469, 52);
             this.barDockControl4.Manager = null;
-            this.barDockControl4.Size = new System.Drawing.Size(0, 919);
+            this.barDockControl4.Size = new System.Drawing.Size(0, 914);
             // 
             // barCheckItem2
             // 
@@ -643,13 +768,6 @@
             this.barCheckItem2.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
             this.barCheckItem2.Name = "barCheckItem2";
             // 
-            // barAndDockingController2
-            // 
-            this.barAndDockingController2.PropertiesBar.AllowLinkLighting = false;
-            this.barAndDockingController2.PropertiesBar.DefaultGlyphSize = new System.Drawing.Size(16, 16);
-            this.barAndDockingController2.PropertiesBar.DefaultLargeGlyphSize = new System.Drawing.Size(32, 32);
-            this.barAndDockingController2.PropertiesBar.ScaleEditors = true;
-            // 
             // barCheckItem3
             // 
             this.barCheckItem3.BindableChecked = true;
@@ -660,334 +778,10 @@
             this.barCheckItem3.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
             this.barCheckItem3.Name = "barCheckItem3";
             // 
-            // repositoryItemCheckedComboBoxEditMovingAverages
+            // notifyIcon1
             // 
-            this.repositoryItemCheckedComboBoxEditMovingAverages.AutoHeight = false;
-            this.repositoryItemCheckedComboBoxEditMovingAverages.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemCheckedComboBoxEditMovingAverages.Name = "repositoryItemCheckedComboBoxEditMovingAverages";
-            this.repositoryItemCheckedComboBoxEditMovingAverages.SelectAllItemVisible = false;
-            // 
-            // barCheckItem4
-            // 
-            this.barCheckItem4.Caption = "Regression Line";
-            this.barCheckItem4.Id = 28;
-            this.barCheckItem4.Name = "barCheckItem4";
-            // 
-            // barDockControl1
-            // 
-            this.barDockControl1.CausesValidation = false;
-            this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControl1.Location = new System.Drawing.Point(0, 23);
-            this.barDockControl1.Manager = this.barManager2;
-            this.barDockControl1.Size = new System.Drawing.Size(0, 965);
-            // 
-            // barManager2
-            // 
-            this.barManager2.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.barMain});
-            this.barManager2.Controller = this.barAndDockingController3;
-            this.barManager2.DockControls.Add(this.barDockControl2);
-            this.barManager2.DockControls.Add(this.barDockControl3);
-            this.barManager2.DockControls.Add(this.barDockControl1);
-            this.barManager2.DockControls.Add(this.barDockControl5);
-            this.barManager2.Form = this;
-            this.barManager2.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.stockBarCheckItem,
-            this.candleStickBarCheckItem,
-            this.volumesBarCheckItem,
-            this.barCheckItem5,
-            this.barCheckItem6,
-            this.barCheckItem7,
-            this.barCheckItem8,
-            this.barCheckItem9,
-            this.barStaticItemPeriod,
-            this.comboBoxBarEditItem,
-            this.barCheckItemTrendLine,
-            this.barCheckItemFibonacciArcs,
-            this.barCheckItemFibonacciFans,
-            this.barCheckItemFibonacciRetracement,
-            this.barCheckItemRemoveIndicator,
-            this.barCheckItem4,
-            this.barStaticItemAdvancedIndicators,
-            this.barEditItemAdvancedIndicators});
-            this.barManager2.MainMenu = this.barMain;
-            this.barManager2.MaxItemId = 37;
-            this.barManager2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemComboBoxPeriod,
-            this.repositoryItemCheckedComboBoxEditMovingAverages,
-            this.repositoryItemComboBoxRegression,
-            this.repositoryItemCheckedComboBoxEditAdvancedIndicators});
-            // 
-            // barMain
-            // 
-            this.barMain.BarName = "Main";
-            this.barMain.DockCol = 0;
-            this.barMain.DockRow = 0;
-            this.barMain.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.barMain.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.stockBarCheckItem, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.candleStickBarCheckItem),
-            new DevExpress.XtraBars.LinkPersistInfo(this.volumesBarCheckItem),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem5, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem6),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem7),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem8),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem9),
-            new DevExpress.XtraBars.LinkPersistInfo(((DevExpress.XtraBars.BarLinkUserDefines)((DevExpress.XtraBars.BarLinkUserDefines.Caption | DevExpress.XtraBars.BarLinkUserDefines.PaintStyle))), this.barStaticItemPeriod, "Period:", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.Caption),
-            new DevExpress.XtraBars.LinkPersistInfo(this.comboBoxBarEditItem),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItemTrendLine, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItemFibonacciArcs),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItemFibonacciFans),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItemFibonacciRetracement),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItemRemoveIndicator),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItemAdvancedIndicators, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barEditItemAdvancedIndicators)});
-            this.barMain.OptionsBar.AllowQuickCustomization = false;
-            this.barMain.OptionsBar.DrawBorder = false;
-            this.barMain.OptionsBar.DrawDragBorder = false;
-            this.barMain.OptionsBar.UseWholeRow = true;
-            this.barMain.Text = "Main";
-            // 
-            // stockBarCheckItem
-            // 
-            this.stockBarCheckItem.Caption = "Stock";
-            this.stockBarCheckItem.GroupIndex = 2;
-            this.stockBarCheckItem.Id = 16;
-            this.stockBarCheckItem.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.stockBarCheckItem.Name = "stockBarCheckItem";
-            // 
-            // candleStickBarCheckItem
-            // 
-            this.candleStickBarCheckItem.BindableChecked = true;
-            this.candleStickBarCheckItem.Caption = "Candle Stick";
-            this.candleStickBarCheckItem.Checked = true;
-            this.candleStickBarCheckItem.GroupIndex = 2;
-            this.candleStickBarCheckItem.Id = 15;
-            this.candleStickBarCheckItem.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.candleStickBarCheckItem.Name = "candleStickBarCheckItem";
-            // 
-            // volumesBarCheckItem
-            // 
-            this.volumesBarCheckItem.BindableChecked = true;
-            this.volumesBarCheckItem.Caption = "Volume";
-            this.volumesBarCheckItem.Checked = true;
-            this.volumesBarCheckItem.Id = 2;
-            this.volumesBarCheckItem.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.volumesBarCheckItem.Name = "volumesBarCheckItem";
-            // 
-            // barCheckItem5
-            // 
-            this.barCheckItem5.Caption = "6m";
-            this.barCheckItem5.GroupIndex = 1;
-            this.barCheckItem5.Id = 4;
-            this.barCheckItem5.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.barCheckItem5.Name = "barCheckItem5";
-            this.barCheckItem5.Tag = 120;
-            // 
-            // barCheckItem6
-            // 
-            this.barCheckItem6.Caption = "1y";
-            this.barCheckItem6.GroupIndex = 1;
-            this.barCheckItem6.Id = 5;
-            this.barCheckItem6.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.barCheckItem6.Name = "barCheckItem6";
-            this.barCheckItem6.Tag = 240;
-            // 
-            // barCheckItem7
-            // 
-            this.barCheckItem7.BindableChecked = true;
-            this.barCheckItem7.Caption = "1.5y";
-            this.barCheckItem7.Checked = true;
-            this.barCheckItem7.GroupIndex = 1;
-            this.barCheckItem7.Id = 6;
-            this.barCheckItem7.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.barCheckItem7.Name = "barCheckItem7";
-            this.barCheckItem7.Tag = 360;
-            // 
-            // barCheckItem8
-            // 
-            this.barCheckItem8.Caption = "2y";
-            this.barCheckItem8.GroupIndex = 1;
-            this.barCheckItem8.Id = 7;
-            this.barCheckItem8.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.barCheckItem8.Name = "barCheckItem8";
-            this.barCheckItem8.Tag = 480;
-            // 
-            // barCheckItem9
-            // 
-            this.barCheckItem9.Caption = "4y";
-            this.barCheckItem9.GroupIndex = 1;
-            this.barCheckItem9.Id = 8;
-            this.barCheckItem9.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.barCheckItem9.Name = "barCheckItem9";
-            this.barCheckItem9.Tag = 960;
-            // 
-            // barStaticItemPeriod
-            // 
-            this.barStaticItemPeriod.Caption = "Period:";
-            this.barStaticItemPeriod.Id = 9;
-            this.barStaticItemPeriod.Name = "barStaticItemPeriod";
-            // 
-            // comboBoxBarEditItem
-            // 
-            this.comboBoxBarEditItem.Caption = "Period";
-            this.comboBoxBarEditItem.Edit = this.repositoryItemComboBoxPeriod;
-            this.comboBoxBarEditItem.EditWidth = 65;
-            this.comboBoxBarEditItem.Id = 13;
-            this.comboBoxBarEditItem.Name = "comboBoxBarEditItem";
-            // 
-            // repositoryItemComboBoxPeriod
-            // 
-            this.repositoryItemComboBoxPeriod.AutoHeight = false;
-            this.repositoryItemComboBoxPeriod.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemComboBoxPeriod.Name = "repositoryItemComboBoxPeriod";
-            this.repositoryItemComboBoxPeriod.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            // 
-            // barCheckItemTrendLine
-            // 
-            this.barCheckItemTrendLine.Caption = "Trend Line";
-            this.barCheckItemTrendLine.Id = 19;
-            this.barCheckItemTrendLine.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.barCheckItemTrendLine.Name = "barCheckItemTrendLine";
-            toolTipTitleItem1.Text = "Trend Line";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "To add a Trend Line, click on the first series point  and drag mouse to the secon" +
-    "d series point.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.barCheckItemTrendLine.SuperTip = superToolTip1;
-            // 
-            // barCheckItemFibonacciArcs
-            // 
-            this.barCheckItemFibonacciArcs.Caption = "Fibonacci Arcs";
-            this.barCheckItemFibonacciArcs.Id = 20;
-            this.barCheckItemFibonacciArcs.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.barCheckItemFibonacciArcs.Name = "barCheckItemFibonacciArcs";
-            toolTipTitleItem2.Text = "Fibonacci Arcs";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "To add a Fibonacci Arcs, click on the first series point  and drag mouse to the s" +
-    "econd series point.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.barCheckItemFibonacciArcs.SuperTip = superToolTip2;
-            // 
-            // barCheckItemFibonacciFans
-            // 
-            this.barCheckItemFibonacciFans.Caption = "Fibonacci Fans";
-            this.barCheckItemFibonacciFans.Id = 21;
-            this.barCheckItemFibonacciFans.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.barCheckItemFibonacciFans.Name = "barCheckItemFibonacciFans";
-            toolTipTitleItem3.Text = "Fibonacci Fans";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "To add a Fibonacci Fans, click on the first series point  and drag mouse to the s" +
-    "econd series point.";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.barCheckItemFibonacciFans.SuperTip = superToolTip3;
-            // 
-            // barCheckItemFibonacciRetracement
-            // 
-            this.barCheckItemFibonacciRetracement.Caption = "Fibonacci Retracement";
-            this.barCheckItemFibonacciRetracement.Id = 22;
-            this.barCheckItemFibonacciRetracement.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.barCheckItemFibonacciRetracement.Name = "barCheckItemFibonacciRetracement";
-            toolTipTitleItem4.Text = "Fibonacci Retracement";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "To add a Fibonacci Retracement, click on the first series point  and drag mouse t" +
-    "o the second series point.";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.barCheckItemFibonacciRetracement.SuperTip = superToolTip4;
-            // 
-            // barCheckItemRemoveIndicator
-            // 
-            this.barCheckItemRemoveIndicator.Caption = "Remove Indicator";
-            this.barCheckItemRemoveIndicator.Id = 27;
-            this.barCheckItemRemoveIndicator.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.barCheckItemRemoveIndicator.Name = "barCheckItemRemoveIndicator";
-            toolTipTitleItem5.Text = "Remove Indicator";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "To remove an indicator, click it or its label.";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.barCheckItemRemoveIndicator.SuperTip = superToolTip5;
-            // 
-            // barStaticItemAdvancedIndicators
-            // 
-            this.barStaticItemAdvancedIndicators.Border = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.barStaticItemAdvancedIndicators.Caption = "Indicators:";
-            this.barStaticItemAdvancedIndicators.Id = 35;
-            this.barStaticItemAdvancedIndicators.Name = "barStaticItemAdvancedIndicators";
-            toolTipTitleItem6.Text = "Advanced Indicators";
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = "To add an indicator, check it in a drop down list.";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.barStaticItemAdvancedIndicators.SuperTip = superToolTip6;
-            // 
-            // barEditItemAdvancedIndicators
-            // 
-            this.barEditItemAdvancedIndicators.Caption = "Advanced Indicators";
-            this.barEditItemAdvancedIndicators.Edit = this.repositoryItemCheckedComboBoxEditAdvancedIndicators;
-            this.barEditItemAdvancedIndicators.EditWidth = 80;
-            this.barEditItemAdvancedIndicators.Id = 36;
-            this.barEditItemAdvancedIndicators.Name = "barEditItemAdvancedIndicators";
-            toolTipTitleItem7.Text = "Advanced Indicators";
-            toolTipItem7.LeftIndent = 6;
-            toolTipItem7.Text = "To add an indicator, check it in a drop down list.";
-            superToolTip7.Items.Add(toolTipTitleItem7);
-            superToolTip7.Items.Add(toolTipItem7);
-            this.barEditItemAdvancedIndicators.SuperTip = superToolTip7;
-            // 
-            // repositoryItemCheckedComboBoxEditAdvancedIndicators
-            // 
-            this.repositoryItemCheckedComboBoxEditAdvancedIndicators.AutoHeight = false;
-            this.repositoryItemCheckedComboBoxEditAdvancedIndicators.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemCheckedComboBoxEditAdvancedIndicators.Name = "repositoryItemCheckedComboBoxEditAdvancedIndicators";
-            this.repositoryItemCheckedComboBoxEditAdvancedIndicators.PopupFormSize = new System.Drawing.Size(240, 410);
-            this.repositoryItemCheckedComboBoxEditAdvancedIndicators.SelectAllItemVisible = false;
-            // 
-            // barAndDockingController3
-            // 
-            this.barAndDockingController3.PropertiesBar.AllowLinkLighting = false;
-            this.barAndDockingController3.PropertiesBar.DefaultGlyphSize = new System.Drawing.Size(16, 16);
-            this.barAndDockingController3.PropertiesBar.DefaultLargeGlyphSize = new System.Drawing.Size(32, 32);
-            this.barAndDockingController3.PropertiesBar.ScaleEditors = true;
-            // 
-            // barDockControl2
-            // 
-            this.barDockControl2.CausesValidation = false;
-            this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControl2.Location = new System.Drawing.Point(0, 0);
-            this.barDockControl2.Manager = this.barManager2;
-            this.barDockControl2.Size = new System.Drawing.Size(1469, 23);
-            // 
-            // barDockControl3
-            // 
-            this.barDockControl3.CausesValidation = false;
-            this.barDockControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControl3.Location = new System.Drawing.Point(0, 988);
-            this.barDockControl3.Manager = this.barManager2;
-            this.barDockControl3.Size = new System.Drawing.Size(1469, 0);
-            // 
-            // barDockControl5
-            // 
-            this.barDockControl5.CausesValidation = false;
-            this.barDockControl5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControl5.Location = new System.Drawing.Point(1469, 23);
-            this.barDockControl5.Manager = this.barManager2;
-            this.barDockControl5.Size = new System.Drawing.Size(0, 965);
-            // 
-            // repositoryItemComboBoxRegression
-            // 
-            this.repositoryItemComboBoxRegression.AutoHeight = false;
-            this.repositoryItemComboBoxRegression.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemComboBoxRegression.Name = "repositoryItemComboBoxRegression";
-            this.repositoryItemComboBoxRegression.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
             // 
             // Form1
             // 
@@ -1001,14 +795,14 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Controls.Add(this.barDockControl1);
-            this.Controls.Add(this.barDockControl5);
-            this.Controls.Add(this.barDockControl3);
-            this.Controls.Add(this.barDockControl2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
             this.stockChartPanel.ResumeLayout(false);
             this.controlContainer2.ResumeLayout(false);
@@ -1023,10 +817,10 @@
             this.panelContainer1.ResumeLayout(false);
             this.stockListPanel.ResumeLayout(false);
             this.controlContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockListBox)).EndInit();
             this.stateBoxPanel.ResumeLayout(false);
             this.dockPanel1_Container.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stateListBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(xyDiagramPane1)).EndInit();
@@ -1042,13 +836,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEditMovingAverages)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBoxPeriod)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEditAdvancedIndicators)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBoxRegression)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1058,13 +845,13 @@
         private DevExpress.XtraBars.FormAssistant formAssistant1;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
         private DevExpress.XtraBars.BarManager barManager1;
-        private DevExpress.XtraBars.Bar bar2;
+        private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.BarSubItem DBUpdate_barSubItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarSubItem barSubItem2;
         private DevExpress.XtraBars.BarSubItem barSubItem3;
-        private DevExpress.XtraBars.Bar bar3;
+        private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
@@ -1078,49 +865,36 @@
         private DevExpress.XtraBars.Docking.DockPanel stockChartPanel;
         private DevExpress.XtraBars.Docking.ControlContainer controlContainer2;
         private DevExpress.XtraCharts.ChartControl chartControl1;
-        private DevExpress.XtraEditors.ListBoxControl listBoxControl1;
-        private DevExpress.XtraEditors.ListBoxControl listBoxControl2;
+        private DevExpress.XtraEditors.ListBoxControl stockListBox;
+        private DevExpress.XtraEditors.ListBoxControl stateListBox;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
-        private DevExpress.XtraBars.BarAndDockingController barAndDockingController2;
         private DevExpress.XtraBars.Docking.DockPanel panelContainer1;
         private DevExpress.XtraBars.BarDockControl barDockControl4;
         private DevExpress.XtraBars.BarAndDockingController barAndDockingController1;
         private DevExpress.XtraBars.BarCheckItem barCheckItem1;
         private DevExpress.XtraBars.BarCheckItem barCheckItemRegressionLine;
         private DevExpress.XtraBars.BarCheckItem barCheckItem2;
-        private DevExpress.XtraBars.BarDockControl barDockControl1;
-        private DevExpress.XtraBars.BarManager barManager2;
-        private DevExpress.XtraBars.Bar barMain;
-        private DevExpress.XtraBars.BarCheckItem stockBarCheckItem;
-        private DevExpress.XtraBars.BarCheckItem candleStickBarCheckItem;
-        private DevExpress.XtraBars.BarCheckItem volumesBarCheckItem;
-        private DevExpress.XtraBars.BarCheckItem barCheckItem5;
-        private DevExpress.XtraBars.BarCheckItem barCheckItem6;
-        private DevExpress.XtraBars.BarCheckItem barCheckItem7;
-        private DevExpress.XtraBars.BarCheckItem barCheckItem8;
-        private DevExpress.XtraBars.BarCheckItem barCheckItem9;
-        private DevExpress.XtraBars.BarStaticItem barStaticItemPeriod;
-        private DevExpress.XtraBars.BarEditItem comboBoxBarEditItem;
-        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxPeriod;
-        private DevExpress.XtraBars.BarCheckItem barCheckItemTrendLine;
-        private DevExpress.XtraBars.BarCheckItem barCheckItemFibonacciArcs;
-        private DevExpress.XtraBars.BarCheckItem barCheckItemFibonacciFans;
-        private DevExpress.XtraBars.BarCheckItem barCheckItemFibonacciRetracement;
-        private DevExpress.XtraBars.BarCheckItem barCheckItemRemoveIndicator;
-        private DevExpress.XtraBars.BarStaticItem barStaticItemAdvancedIndicators;
-        private DevExpress.XtraBars.BarEditItem barEditItemAdvancedIndicators;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit repositoryItemCheckedComboBoxEditAdvancedIndicators;
-        private DevExpress.XtraBars.BarAndDockingController barAndDockingController3;
-        private DevExpress.XtraBars.BarDockControl barDockControl2;
-        private DevExpress.XtraBars.BarDockControl barDockControl3;
-        private DevExpress.XtraBars.BarDockControl barDockControl5;
-        private DevExpress.XtraBars.BarCheckItem barCheckItem4;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit repositoryItemCheckedComboBoxEditMovingAverages;
-        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBoxRegression;
         public DevExpress.XtraCharts.ChartControl stockChart;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraBars.BarCheckItem barCheckItem3;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarListItem barListItem1;
+        private DevExpress.XtraBars.BarEditItem barEditItem1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit1;
+        private DevExpress.XtraBars.SkinBarSubItem skinBarSubItem1;
+        private DevExpress.XtraBars.Bar bar3;
+        private DevExpress.XtraBars.BarEditItem barEditItem2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit2;
+        private DevExpress.XtraBars.BarEditItem barEditItem3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit repositoryItemCheckedComboBoxEdit1;
+        private DevExpress.XtraBars.BarSubItem barSubItem4;
+        private DevExpress.XtraBars.BarListItem barListItem2;
+        private DevExpress.XtraBars.BarEditItem barEditItem4;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
+        private DevExpress.XtraBars.BarHeaderItem barHeaderItem1;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem1;
     }
 }
 

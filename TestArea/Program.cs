@@ -17,16 +17,39 @@ namespace TestArea
         static void Main()
         {
             //first get a valid token from Yahoo Finance
-            while (string.IsNullOrEmpty(Token.Cookie) || string.IsNullOrEmpty(Token.Crumb))
+            //while (string.IsNullOrEmpty(Token.Cookie) || string.IsNullOrEmpty(Token.Crumb))
+            //{
+            //    Token.RefreshAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+            //}
+            //List<HistoryPrice> NASDAQ = Historical.GetPriceAsync("^IXIC", DateTime.Now.AddYears(-1),DateTime.Now).ConfigureAwait(false).GetAwaiter().GetResult();
+            //foreach(HistoryPrice a in NASDAQ)
+            //{
+            //    Console.WriteLine($"{a.Date.ToString("MM/dd/yyyy")} {a.Open} {a.High} {a.Low} {a.Close} {a.Volume}");
+            //}
+            //Console.ReadKey();
+
+
+            string[] s = {              "自動更新股票歷史價格中...",
+                                        "網路取得價格:UpdatePriceListsProgress%",
+                                        "寫入資料庫:WrittingDBProgress%"};
+
+            int a = 1;
+            int b = 2;
+            int c = 3;
+
+
+            for (int i = 0; i < s.Length; i++)
             {
-                Token.RefreshAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+                s[i] = s[i].Replace("UpdatePriceListsProgress", a.ToString());
+                s[i] = s[i].Replace("WrittingDBProgress", "2");
             }
-            List<HistoryPrice> NASDAQ = Historical.GetPriceAsync("^IXIC", DateTime.Now.AddYears(-1),DateTime.Now).ConfigureAwait(false).GetAwaiter().GetResult();
-            foreach(HistoryPrice a in NASDAQ)
+            foreach (var item in s)
             {
-                Console.WriteLine($"{a.Date.ToString("MM/dd/yyyy")} {a.Open} {a.High} {a.Low} {a.Close} {a.Volume}");
+                Console.WriteLine(item);
             }
             Console.ReadKey();
         }
+
     }
+
 }
