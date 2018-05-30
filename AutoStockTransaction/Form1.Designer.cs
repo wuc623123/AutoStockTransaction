@@ -66,10 +66,18 @@
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
-            this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemSpinEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
-            this.barEditItem4 = new DevExpress.XtraBars.BarEditItem();
+            this.barHeaderItem5 = new DevExpress.XtraBars.BarHeaderItem();
+            this.startDateBarEditItem = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.barHeaderItem4 = new DevExpress.XtraBars.BarHeaderItem();
+            this.endDateBarEditItem = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.barHeaderItem2 = new DevExpress.XtraBars.BarHeaderItem();
+            this.intervalBarEditItem = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.barHeaderItem6 = new DevExpress.XtraBars.BarHeaderItem();
+            this.IndicatorBarEditItem = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -77,11 +85,19 @@
             this.skinBarSubItem1 = new DevExpress.XtraBars.SkinBarSubItem();
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
+            this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemSpinEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.barEditItem3 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemCheckedComboBoxEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
             this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
             this.barListItem2 = new DevExpress.XtraBars.BarListItem();
             this.barHeaderItem1 = new DevExpress.XtraBars.BarHeaderItem();
+            this.barEditItem5 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemDayOfWeek1 = new DevExpress.XtraScheduler.UI.RepositoryItemDayOfWeek();
+            this.barHeaderItem3 = new DevExpress.XtraBars.BarHeaderItem();
+            this.barEditItem8 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemBreadCrumbEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit();
+            this.barListItem3 = new DevExpress.XtraBars.BarListItem();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.stockChartPanel = new DevExpress.XtraBars.Docking.DockPanel();
             this.controlContainer2 = new DevExpress.XtraBars.Docking.ControlContainer();
@@ -105,10 +121,17 @@
             this.barCheckItem3 = new DevExpress.XtraBars.BarCheckItem();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDayOfWeek1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemBreadCrumbEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.stockChartPanel.SuspendLayout();
             this.controlContainer2.SuspendLayout();
@@ -176,16 +199,32 @@
             this.barEditItem3,
             this.barSubItem4,
             this.barListItem2,
-            this.barEditItem4,
+            this.intervalBarEditItem,
             this.barHeaderItem1,
-            this.barStaticItem1});
+            this.barStaticItem1,
+            this.barEditItem5,
+            this.startDateBarEditItem,
+            this.endDateBarEditItem,
+            this.barHeaderItem2,
+            this.barHeaderItem3,
+            this.barHeaderItem4,
+            this.barHeaderItem5,
+            this.barHeaderItem6,
+            this.barEditItem8,
+            this.IndicatorBarEditItem,
+            this.barListItem3});
             this.barManager1.MainMenu = this.bar1;
-            this.barManager1.MaxItemId = 17;
+            this.barManager1.MaxItemId = 29;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSpinEdit1,
             this.repositoryItemSpinEdit2,
             this.repositoryItemCheckedComboBoxEdit1,
-            this.repositoryItemComboBox1});
+            this.repositoryItemComboBox1,
+            this.repositoryItemDayOfWeek1,
+            this.repositoryItemDateEdit1,
+            this.repositoryItemDateEdit2,
+            this.repositoryItemBreadCrumbEdit1,
+            this.repositoryItemComboBox2});
             this.barManager1.StatusBar = this.bar2;
             // 
             // bar1
@@ -286,8 +325,14 @@
             this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem4)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barHeaderItem5),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, this.startDateBarEditItem, "", false, true, true, 124),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barHeaderItem4),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, this.endDateBarEditItem, "", false, true, true, 154),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barHeaderItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, this.intervalBarEditItem, "", false, true, true, 49),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barHeaderItem6),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, this.IndicatorBarEditItem, "", false, true, true, 107)});
             this.bar3.OptionsBar.UseWholeRow = true;
             this.bar3.Text = "股票資料設定表";
             // 
@@ -297,26 +342,75 @@
             this.barStaticItem1.Id = 16;
             this.barStaticItem1.Name = "barStaticItem1";
             // 
-            // barEditItem2
+            // barHeaderItem5
             // 
-            this.barEditItem2.Caption = "barEditItem2";
-            this.barEditItem2.Edit = this.repositoryItemSpinEdit2;
-            this.barEditItem2.Id = 10;
-            this.barEditItem2.Name = "barEditItem2";
+            this.barHeaderItem5.Caption = "起始日期";
+            this.barHeaderItem5.Id = 24;
+            this.barHeaderItem5.Name = "barHeaderItem5";
             // 
-            // repositoryItemSpinEdit2
+            // startDateBarEditItem
             // 
-            this.repositoryItemSpinEdit2.AutoHeight = false;
-            this.repositoryItemSpinEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.startDateBarEditItem.Caption = "開始日期";
+            this.startDateBarEditItem.ContentHorizontalAlignment = DevExpress.XtraBars.BarItemContentAlignment.Stretch;
+            this.startDateBarEditItem.Edit = this.repositoryItemDateEdit1;
+            this.startDateBarEditItem.Id = 18;
+            this.startDateBarEditItem.Name = "startDateBarEditItem";
+            this.startDateBarEditItem.Size = new System.Drawing.Size(100, 0);
+            this.startDateBarEditItem.EditValueChanged += new System.EventHandler(this.EditValueChanged);
+            // 
+            // repositoryItemDateEdit1
+            // 
+            this.repositoryItemDateEdit1.AutoHeight = false;
+            this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemSpinEdit2.Name = "repositoryItemSpinEdit2";
+            this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.CalendarView = DevExpress.XtraEditors.Repository.CalendarView.TouchUI;
+            this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
+            this.repositoryItemDateEdit1.NullDateCalendarValue = new System.DateTime(2013, 1, 1, 0, 0, 0, 0);
+            this.repositoryItemDateEdit1.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.False;
             // 
-            // barEditItem4
+            // barHeaderItem4
             // 
-            this.barEditItem4.Caption = "barEditItem4";
-            this.barEditItem4.Edit = this.repositoryItemComboBox1;
-            this.barEditItem4.Id = 14;
-            this.barEditItem4.Name = "barEditItem4";
+            this.barHeaderItem4.Caption = "結束日期";
+            this.barHeaderItem4.Id = 23;
+            this.barHeaderItem4.Name = "barHeaderItem4";
+            // 
+            // endDateBarEditItem
+            // 
+            this.endDateBarEditItem.Caption = "結束日期";
+            this.endDateBarEditItem.Edit = this.repositoryItemDateEdit2;
+            this.endDateBarEditItem.Id = 19;
+            this.endDateBarEditItem.Name = "endDateBarEditItem";
+            this.endDateBarEditItem.Size = new System.Drawing.Size(100, 0);
+            this.endDateBarEditItem.EditValueChanged += new System.EventHandler(this.EditValueChanged);
+            // 
+            // repositoryItemDateEdit2
+            // 
+            this.repositoryItemDateEdit2.AutoHeight = false;
+            this.repositoryItemDateEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit2.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit2.CalendarView = DevExpress.XtraEditors.Repository.CalendarView.TouchUI;
+            this.repositoryItemDateEdit2.Name = "repositoryItemDateEdit2";
+            this.repositoryItemDateEdit2.NullDateCalendarValue = new System.DateTime(2018, 5, 14, 1, 10, 48, 0);
+            this.repositoryItemDateEdit2.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.False;
+            // 
+            // barHeaderItem2
+            // 
+            this.barHeaderItem2.Caption = "週期";
+            this.barHeaderItem2.Id = 20;
+            this.barHeaderItem2.Name = "barHeaderItem2";
+            // 
+            // intervalBarEditItem
+            // 
+            this.intervalBarEditItem.Caption = "頻率";
+            this.intervalBarEditItem.ContentHorizontalAlignment = DevExpress.XtraBars.BarItemContentAlignment.Center;
+            this.intervalBarEditItem.Edit = this.repositoryItemComboBox1;
+            this.intervalBarEditItem.Id = 14;
+            this.intervalBarEditItem.Name = "intervalBarEditItem";
+            this.intervalBarEditItem.EditValueChanged += new System.EventHandler(this.EditValueChanged);
             // 
             // repositoryItemComboBox1
             // 
@@ -326,10 +420,35 @@
             this.repositoryItemComboBox1.ExportMode = DevExpress.XtraEditors.Repository.ExportMode.DisplayText;
             this.repositoryItemComboBox1.Items.AddRange(new object[] {
             "日",
-            "月",
-            "年"});
+            "周",
+            "月"});
             this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
             this.repositoryItemComboBox1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            // 
+            // barHeaderItem6
+            // 
+            this.barHeaderItem6.Caption = "指標";
+            this.barHeaderItem6.Id = 25;
+            this.barHeaderItem6.Name = "barHeaderItem6";
+            // 
+            // IndicatorBarEditItem
+            // 
+            this.IndicatorBarEditItem.Caption = "barEditItem9";
+            this.IndicatorBarEditItem.Edit = this.repositoryItemComboBox2;
+            this.IndicatorBarEditItem.Id = 27;
+            this.IndicatorBarEditItem.Name = "IndicatorBarEditItem";
+            this.IndicatorBarEditItem.EditValueChanged += new System.EventHandler(this.EditValueChanged);
+            // 
+            // repositoryItemComboBox2
+            // 
+            this.repositoryItemComboBox2.AutoHeight = false;
+            this.repositoryItemComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox2.Items.AddRange(new object[] {
+            "MACD",
+            "DMA"});
+            this.repositoryItemComboBox2.Name = "repositoryItemComboBox2";
+            this.repositoryItemComboBox2.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             // 
             // barDockControlTop
             // 
@@ -383,6 +502,20 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemSpinEdit1.Name = "repositoryItemSpinEdit1";
             // 
+            // barEditItem2
+            // 
+            this.barEditItem2.Caption = "barEditItem2";
+            this.barEditItem2.Edit = this.repositoryItemSpinEdit2;
+            this.barEditItem2.Id = 10;
+            this.barEditItem2.Name = "barEditItem2";
+            // 
+            // repositoryItemSpinEdit2
+            // 
+            this.repositoryItemSpinEdit2.AutoHeight = false;
+            this.repositoryItemSpinEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSpinEdit2.Name = "repositoryItemSpinEdit2";
+            // 
             // barEditItem3
             // 
             this.barEditItem3.Caption = "barEditItem3";
@@ -426,6 +559,54 @@
             this.barHeaderItem1.Caption = "barHeaderItem1";
             this.barHeaderItem1.Id = 15;
             this.barHeaderItem1.Name = "barHeaderItem1";
+            // 
+            // barEditItem5
+            // 
+            this.barEditItem5.Caption = "barEditItem5";
+            this.barEditItem5.Edit = this.repositoryItemDayOfWeek1;
+            this.barEditItem5.Id = 17;
+            this.barEditItem5.Name = "barEditItem5";
+            // 
+            // repositoryItemDayOfWeek1
+            // 
+            this.repositoryItemDayOfWeek1.AutoHeight = false;
+            this.repositoryItemDayOfWeek1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDayOfWeek1.Name = "repositoryItemDayOfWeek1";
+            // 
+            // barHeaderItem3
+            // 
+            this.barHeaderItem3.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            this.barHeaderItem3.Appearance.Font = new System.Drawing.Font("新細明體-ExtB", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.barHeaderItem3.Appearance.Options.UseFont = true;
+            this.barHeaderItem3.Caption = "起始日期";
+            this.barHeaderItem3.Id = 22;
+            this.barHeaderItem3.Name = "barHeaderItem3";
+            // 
+            // barEditItem8
+            // 
+            this.barEditItem8.Caption = "barEditItem8";
+            this.barEditItem8.Edit = this.repositoryItemBreadCrumbEdit1;
+            this.barEditItem8.Id = 26;
+            this.barEditItem8.Name = "barEditItem8";
+            // 
+            // repositoryItemBreadCrumbEdit1
+            // 
+            this.repositoryItemBreadCrumbEdit1.AutoHeight = false;
+            this.repositoryItemBreadCrumbEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemBreadCrumbEdit1.Name = "repositoryItemBreadCrumbEdit1";
+            // 
+            // barListItem3
+            // 
+            this.barListItem3.Caption = "barListItem3";
+            this.barListItem3.Id = 28;
+            this.barListItem3.Name = "barListItem3";
+            this.barListItem3.Strings.AddRange(new object[] {
+            "123",
+            "123",
+            "321",
+            "654"});
             // 
             // dockManager1
             // 
@@ -554,7 +735,7 @@
             this.stockListPanel.ID = new System.Guid("4b907031-7170-4947-8ae0-3c14065928ef");
             this.stockListPanel.Location = new System.Drawing.Point(0, 0);
             this.stockListPanel.Name = "stockListPanel";
-            this.stockListPanel.OriginalSize = new System.Drawing.Size(294, 458);
+            this.stockListPanel.OriginalSize = new System.Drawing.Size(294, 457);
             this.stockListPanel.Size = new System.Drawing.Size(294, 457);
             this.stockListPanel.Text = "stockListPanel";
             // 
@@ -585,7 +766,7 @@
             this.stateBoxPanel.ID = new System.Guid("41324638-e907-4d34-9856-47083c1da1ff");
             this.stateBoxPanel.Location = new System.Drawing.Point(0, 457);
             this.stateBoxPanel.Name = "stateBoxPanel";
-            this.stateBoxPanel.OriginalSize = new System.Drawing.Size(294, 458);
+            this.stateBoxPanel.OriginalSize = new System.Drawing.Size(294, 457);
             this.stateBoxPanel.Size = new System.Drawing.Size(294, 457);
             this.stateBoxPanel.Text = "stateBoxPanel";
             this.stateBoxPanel.CustomButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.stateBoxPanel_CustomButtonClick);
@@ -799,10 +980,17 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDayOfWeek1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemBreadCrumbEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
             this.stockChartPanel.ResumeLayout(false);
             this.controlContainer2.ResumeLayout(false);
@@ -891,10 +1079,26 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit repositoryItemCheckedComboBoxEdit1;
         private DevExpress.XtraBars.BarSubItem barSubItem4;
         private DevExpress.XtraBars.BarListItem barListItem2;
-        private DevExpress.XtraBars.BarEditItem barEditItem4;
+        private DevExpress.XtraBars.BarEditItem intervalBarEditItem;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
         private DevExpress.XtraBars.BarHeaderItem barHeaderItem1;
         private DevExpress.XtraBars.BarStaticItem barStaticItem1;
+        private DevExpress.XtraBars.BarEditItem barEditItem5;
+        private DevExpress.XtraScheduler.UI.RepositoryItemDayOfWeek repositoryItemDayOfWeek1;
+        private DevExpress.XtraBars.BarEditItem startDateBarEditItem;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
+        private DevExpress.XtraBars.BarEditItem endDateBarEditItem;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit2;
+        private DevExpress.XtraBars.BarHeaderItem barHeaderItem2;
+        private DevExpress.XtraBars.BarHeaderItem barHeaderItem5;
+        private DevExpress.XtraBars.BarHeaderItem barHeaderItem4;
+        private DevExpress.XtraBars.BarHeaderItem barHeaderItem3;
+        private DevExpress.XtraBars.BarHeaderItem barHeaderItem6;
+        private DevExpress.XtraBars.BarEditItem barEditItem8;
+        private DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit repositoryItemBreadCrumbEdit1;
+        private DevExpress.XtraBars.BarEditItem IndicatorBarEditItem;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox2;
+        private DevExpress.XtraBars.BarListItem barListItem3;
     }
 }
 

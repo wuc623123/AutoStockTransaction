@@ -1,16 +1,13 @@
 ﻿using DevExpress.XtraCharts;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Trady.Core;
 
 namespace AutoStockTransaction
 {
     public class StockChart
     {
-        public void DrawingStockChart(ChartControl chartControl, List<StockHistoricalPrice> oneOfStkHistoryPrice)
+        public void DrawingStockChart(ChartControl chartControl, List<Candle> oneOfStkHistoryPrice)
         {
             //設定price candle stick顏色
             CandleStickSeriesView priceSeriesView = (CandleStickSeriesView)chartControl.Series["Price"].View;
@@ -18,11 +15,11 @@ namespace AutoStockTransaction
             priceSeriesView.ReductionOptions.Color = Color.Green;
             //加入price資料
             chartControl.Series["Price"].DataSource = oneOfStkHistoryPrice;
-            chartControl.Series["Price"].ArgumentDataMember = "Date";
-            chartControl.Series["Price"].ValueDataMembers.AddRange(new string[] { "LowPrice", "HighPrice", "OpenPrice", "ClosePrice" });
+            chartControl.Series["Price"].ArgumentDataMember = "DateTime";
+            chartControl.Series["Price"].ValueDataMembers.AddRange(new string[] { "Low", "High", "Open", "Close" });
             //加入volume資料
             chartControl.Series["Volume"].DataSource = oneOfStkHistoryPrice;
-            chartControl.Series["Volume"].ArgumentDataMember = "Date";
+            chartControl.Series["Volume"].ArgumentDataMember = "DateTime";
             chartControl.Series["Volume"].ValueDataMembers.AddRange(new string[] { "Volume" });
         }
     }

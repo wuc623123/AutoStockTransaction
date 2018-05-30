@@ -17,15 +17,13 @@ namespace AutoStockTransaction
 
         public async Task UpdatePriceToDB(IProgress<RptStructure> progress)
         {
-            using (StockEntities se = new StockEntities())
-            {   //刪除所以價格資料
-                se.StockHistoricalPrice.Where(shp => true).DeleteFromQuery();
-            }
             List<string> neededUpdateList = await GetAllNeededAddStkCode();//取得stkcode差集列表
             //取得所有需要新增的股票價格列表
             ConcurrentStack<List<StockHistoricalPrice>> allStkPrice = await GetAllStkPrice(neededUpdateList, progress);
             using (StockEntities se = new StockEntities())
             {
+                se.StockHistoricalPrice.Where(shp => true).DeleteFromQuery();//刪除所有價格資料
+                se.SaveChanges();
                 //新增所有缺少記錄的價格資料
                 int index = 0;
                 RptStructure RptProgress;
@@ -76,7 +74,7 @@ namespace AutoStockTransaction
             ConcurrentStack<List<StockHistoricalPrice>> allStkPrice = new ConcurrentStack<List<StockHistoricalPrice>>();
             await Task.Run(() =>
             {
-                Parallel.ForEach(neededUpdateList, new ParallelOptions { MaxDegreeOfParallelism = 3 }, aStk =>
+                Parallel.ForEach(neededUpdateList, new ParallelOptions { MaxDegreeOfParallelism = 1 }, aStk =>
                 {
                     var RptState = new RptStructure();
                     List<StockHistoricalPrice> aYahooHistoryPriceList = YahooGetHistoricalPrice(".TW", aStk, DateTime.Now.AddYears(-20), DateTime.Now).GetAwaiter().GetResult();
@@ -132,16 +130,13 @@ namespace AutoStockTransaction
             List<StockHistoricalPrice> shpList = new List<StockHistoricalPrice>();
             foreach (HistoryPrice hp in hps)
             {
-                shpList.Add(new StockHistoricalPrice()
-                {
-                    StkCode = symbol,
-                    Date = hp.Date,
-                    OpenPrice = (decimal)hp.Open,
-                    HighPrice = (decimal)hp.High,
-                    LowPrice = (decimal)hp.Low,
-                    ClosePrice = (decimal)hp.Close,
-                    Volume = hp.Volume
-                });
+                shpList.Add(new StockHistoricalPrice(symbol,
+                    hp.Date,
+                    (decimal)hp.Open,
+                    (decimal)hp.High,
+                    (decimal)hp.Low,
+                    (decimal)hp.Close,
+                    (decimal)hp.Volume));
             }
             return shpList;
         }
@@ -155,16 +150,13 @@ namespace AutoStockTransaction
             List<StockHistoricalPrice> shpList = new List<StockHistoricalPrice>();
             foreach (Candle candle in candles)
             {
-                shpList.Add(new StockHistoricalPrice()
-                {
-                    StkCode = symbol,
-                    Date = candle.DateTime,
-                    OpenPrice = (decimal)candle.Open,
-                    HighPrice = (decimal)candle.High,
-                    LowPrice = (decimal)candle.Low,
-                    ClosePrice = (decimal)candle.Close,
-                    Volume = (double)candle.Volume
-                });
+                shpList.Add(new StockHistoricalPrice(symbol,
+                                            candle.DateTime,
+                                            candle.Open,
+                                            candle.High,
+                                            candle.Low,
+                                            candle.Close,
+                                            candle.Volume));
             }
             return shpList;
         }

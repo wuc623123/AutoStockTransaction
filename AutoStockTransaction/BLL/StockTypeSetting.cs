@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections;
 
 namespace AutoStockTransaction
 {
@@ -10,6 +7,12 @@ namespace AutoStockTransaction
     {
         public static DateTime StartDate { get; set; }
         public static DateTime EndDate { get; set; }
-        public static string 
+        public static string Interval { get; set; }
+        public static string Indicator { get; set; }
+
+        public enum Indicators
+        {
+            
+        }
     }
 }

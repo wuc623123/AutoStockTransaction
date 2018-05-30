@@ -27,12 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="YahooFinanceApi">
-      <HintPath>..\..\AutoStockTransaction\YahooFinanceAPI.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="fb.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

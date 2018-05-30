@@ -14,13 +14,26 @@ namespace AutoStockTransaction
     
     public partial class StockHistoricalPrice
     {
+        public StockHistoricalPrice()
+        {
+        }
+        public StockHistoricalPrice(string stkcode,DateTime dateTime,decimal openPrice,decimal highPrice,decimal lowPrice,decimal closePrice, decimal volume)
+        {
+            this.StkCode = stkcode;
+            this.Date = dateTime;
+            this.OpenPrice = openPrice;
+            this.HighPrice = highPrice;
+            this.LowPrice = lowPrice;
+            this.ClosePrice = closePrice;
+            this.Volume = volume;
+        }
         public string StkCode { get; set; }
-        public System.DateTime Date { get; set; }
+        public DateTime Date { get; set; }
         public decimal OpenPrice { get; set; }
         public decimal HighPrice { get; set; }
         public decimal LowPrice { get; set; }
         public decimal ClosePrice { get; set; }
-        public double Volume { get; set; }
+        public decimal Volume { get; set; }
     
         public virtual ListedStock ListedStock { get; set; }
     }

@@ -176,12 +176,10 @@ namespace AutoStockTransaction
                 row++;
             }
         }
-
         public void WriteToDB()
         {
             using (StockEntities se = new StockEntities())
             {
-
                 var deleteData = from ls in se.ListedStock
                                  select ls;
                 RST.Start();

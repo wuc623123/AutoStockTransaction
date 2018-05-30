@@ -27,10 +27,9 @@ namespace AutoStockTransaction
             }
         }
         public void UpdateListBoxControlItem(object listBox,object stateBox, NotifyIcon notifyIcon)
-        {
-            //因為股票代碼更新會影響資料與資料庫的批配性,所以此更新stocklistbox功能必須移出成獨立方法,並隨時調用
+        {   //因為股票代碼更新會影響資料與資料庫的批配性,所以此更新stocklistbox功能必須移出成獨立方法,並隨時調用
             DataBaseReadWrite stockDataType = new DataBaseReadWrite();
-            List<ListedStock> stkCodeAndNameList = stockDataType.GetStkCodeAndNameWithCat(1);
+            List<ListedStock> stkCodeAndNameList = stockDataType.ReadStkCodeAndNameWithCat(1);
             ((ListBoxControl)listBox).Items.Clear();
             foreach (ListedStock ls in stkCodeAndNameList)
                 ((ListBoxControl)listBox).Items.Add($"{ls.StkCode} {ls.StkName}");

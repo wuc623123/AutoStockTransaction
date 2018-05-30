@@ -1,30 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoStockTransaction
 {
-    class DataBaseReadWrite
+    public class DataBaseReadWrite
     {
-        public List<StockHistoricalPrice> GetHistoricalPrice(string stkId, DateTime startDate,DateTime endDate)
+        public List<StockHistoricalPrice> ReadHistoricalPrice(string stkId)
         {
-            if(endDate == null)
+            var startDate = StockTypeSettings.StartDate;
+            var endDate = StockTypeSettings.EndDate;
+            if (startDate == DateTime.Parse("0001/1/1"))
             {
-                endDate = DateTime.Now.Date;
+                startDate = DateTime.Now.AddYears(-1);
+            }
+            if (endDate == DateTime.Parse("0001/1/1"))
+            {
+                endDate = DateTime.Now;
             }
             using (StockEntities se = new StockEntities())
             {   //取得listbox被選中的股票的歷史價格
                 var oneOfStkHistoryPrice = (from oneOfStkPrice in se.StockHistoricalPrice
-                                            where oneOfStkPrice.StkCode == stkId
-                                            where oneOfStkPrice.Date.CompareTo(startDate) > 0
-                                            where oneOfStkPrice.Date.CompareTo(endDate) < 0
+                                            where oneOfStkPrice.StkCode == stkId &&
+                                            oneOfStkPrice.Date >= startDate && oneOfStkPrice.Date <= endDate
                                             select oneOfStkPrice).ToList();
                 return oneOfStkHistoryPrice;
             }
         }
-        public List<ListedStock> GetStkCodeAndNameWithCat(int Category)
+
+        public List<ListedStock> ReadStkCodeAndNameWithCat(int Category)
         {   //取得category X 股票代碼分類 StockData.StkCategory
             //Stock                     = 1
             //ListedWarrant             = 2
@@ -35,12 +39,16 @@ namespace AutoStockTransaction
             //ETF                       = 7
             //SpecialStock              = 8
             using (StockEntities se = new StockEntities())
-            {
+            { 
                 var stkCodeAndNameList = (from stkCodeName in se.ListedStock
                                           where stkCodeName.StkCategory == Category
                                           select stkCodeName).ToList();
                 return stkCodeAndNameList;
             }
+        }
+        public void WriteListedStockToDB(List<ListedStock> listedStock)
+        {
+
         }
     }
 }

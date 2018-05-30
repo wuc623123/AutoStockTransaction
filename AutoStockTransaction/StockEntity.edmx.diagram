@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="aaa1e52a7d984f4e985d892842a46db5" Name="Diagram1">
-        <EntityTypeShape EntityType="StockModel.ListedStock" Width="1.5" PointX="0.75" PointY="1" />
-        <EntityTypeShape EntityType="StockModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" />
-        <EntityTypeShape EntityType="StockModel.StockHistoricalPrice" Width="1.5" PointX="3" PointY="1" />
-        <AssociationConnector Association="StockModel.FK_StockHistoricalPrice_ListedStock" />
+      <Diagram DiagramId="02af3701b9314670b7f02d9f29564766" Name="Diagram1">
+        <EntityTypeShape EntityType="StockModel.ListedStock" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="StockModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StockModel.StockHistoricalPrice" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="StockModel.FK_StockHistoricalPrice_ListedStock" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

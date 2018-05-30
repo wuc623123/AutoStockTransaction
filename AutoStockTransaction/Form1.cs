@@ -1,10 +1,4 @@
-﻿using DevExpress.XtraCharts;
-using DevExpress.XtraEditors;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+﻿using System;
 using System.Threading.Tasks;
 
 namespace AutoStockTransaction
@@ -61,22 +55,39 @@ namespace AutoStockTransaction
         private void ListBoxControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (stockListBox.SelectedItem != null)
-            {
+            {   //須修改為正規取值
                 string[] stkCodeName = stockListBox.SelectedItem.ToString().Split(' ');
-                var stkID = stkCodeName[0];
+                var stkCode = stkCodeName[0];
                 //取得listbox被選中的股票的歷史價格
-                DataBaseReadWrite stockDataType = new DataBaseReadWrite();
-                DateTime startTime = DateTime.Now.AddYears(-5);
-                var oneOfStkHistoryPrice = stockDataType.GetHistoricalPrice(stkID, startTime,null);
+                TechnicalAnalysis technicalAnalysis = new TechnicalAnalysis();
+                var oneOfStkHistoryPrice = technicalAnalysis.GetIntervalPriceList(stkCode);
                 StockChart Chart = new StockChart();
                 Chart.DrawingStockChart(stockChart, oneOfStkHistoryPrice);
             }
         }
+
         private void stateBoxPanel_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.ButtonEventArgs e)
         {
             //更新不動作才可以清除狀態欄內的資料
             UserControlItemUpdateAndRemove userControlItemRemove = new UserControlItemUpdateAndRemove();
             userControlItemRemove.RemoveListBoxCotrolItem(stateListBox, DBUpdate_barSubItem1, notifyIcon1);
+        }
+
+        private void EditValueChanged(object sender, EventArgs e)
+        {
+            if (startDateBarEditItem.EditValue != null)
+            {
+                StockTypeSettings.StartDate = (DateTime)startDateBarEditItem.EditValue;
+            }
+            if (endDateBarEditItem.EditValue != null)
+            {
+                StockTypeSettings.EndDate = (DateTime)endDateBarEditItem.EditValue;
+            }
+            if (intervalBarEditItem.Edit.ToString() != null)
+            {
+                StockTypeSettings.Interval = (string)intervalBarEditItem.EditValue;
+            }
+            ListBoxControl1_SelectedIndexChanged(stockListBox, null);
         }
     }
 }
