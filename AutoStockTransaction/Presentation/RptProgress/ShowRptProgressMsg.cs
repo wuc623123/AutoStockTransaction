@@ -1,87 +1,107 @@
 ﻿using DevExpress.XtraEditors;
+
 using System.Collections.Generic;
 
 namespace AutoStockTransaction
 {
-    internal class ShowRptProgressMsg : IMsgDisplayable
-    {
-        public ListBoxControl ListBoxObject { get; set; }
-        public string[] MsgFormat { get; set; }
-        
-        public List<int> IndexOfListbox { get; set; }
+    using System.Globalization;
 
-        public ShowRptProgressMsg(ListBoxControl ListBoxObject, string[] msgFormat)
+    internal class ShowReportProgressMsg : IMsgDisplayable
+    {
+        /// <summary>
+        /// Gets or sets the list box object.
+        /// </summary>
+        public ListBoxControl ListBoxObject { get; set; }
+
+        public string[] MsgFormat { get; set; }
+
+        public List<int> IndexOfListBox { get; set; }
+
+        public ShowReportProgressMsg(ListBoxControl ListBoxObject, string[] msgFormat)
         {
             this.ListBoxObject = ListBoxObject;
-            IndexOfListbox = new List<int>();
+            this.IndexOfListBox = new List<int>();
             this.MsgFormat = msgFormat;
         }
-        public void DispMsgToUserCtrl(object msg)
+
+        public void DisplayMsgToUserCtrl(object msg)
         {
-            RptStructure rs = msg as RptStructure;
-            string[] completeOutputMsg = EmbedMsgInFormat(msg, MsgFormat);
-            //在這個progress中,沒資料時先新增一次訊息
-            if (IndexOfListbox.Count == 0)
-            {   //將N陣列塞入進listbox2中,並取回N個索引值
+            var rs = msg as RptStructure;
+            var completeOutputMsg = this.EmbedMsgInFormat(msg, this.MsgFormat);
+
+            // 在這個progress中,沒資料時先新增一次訊息
+            if (this.IndexOfListBox.Count == 0)
+            {
+                // 將N陣列塞入進listbox2中,並取回N個索引值
                 foreach (var oneStringOfMsg in completeOutputMsg)
                 {
-                    IndexOfListbox.Add(ListBoxObject.Items.Add(oneStringOfMsg));
+                    this.IndexOfListBox.Add(this.ListBoxObject.Items.Add(oneStringOfMsg));
                 }
             }
-            else//當有資料時將覆蓋N個listbox的N個items
+            else
             {
-                int indexOfCompleteOutput = 0;
-                foreach (int index in IndexOfListbox)
+                // 當有資料時將覆蓋N個listbox的N個items
+                var indexOfCompleteOutput = 0;
+                foreach (var index in this.IndexOfListBox)
                 {
-                    ListBoxObject.Items[index] = completeOutputMsg[indexOfCompleteOutput];
+                    this.ListBoxObject.Items[index] = completeOutputMsg[indexOfCompleteOutput];
                     indexOfCompleteOutput++;
                 }
             }
-            if (rs.ErrorStkCode != null)
+
+            if (rs?.ErrorStkCode != null)
             {
-                ListBoxObject.Items.Add(rs.ErrorStkCode);
-                //ListBoxObject.SelectedIndex = ListBoxObject.Items.Count - 1;
+                // ListBoxObject.SelectedIndex = ListBoxObject.Items.Count - 1;
+                this.ListBoxObject.Items.Add(rs.ErrorStkCode);
             }
-            if (rs.ProcessTime != null)
+
+            if (rs?.ProcessTime != null)
             {
                 foreach (var time in rs.ProcessTime)
                 {
-                    ListBoxObject.Items.Add(time);
-                    //ListBoxObject.SelectedIndex = ListBoxObject.Items.Count - 1;
+                    // ListBoxObject.SelectedIndex = ListBoxObject.Items.Count - 1;
+                    this.ListBoxObject.Items.Add(time);
                 }
             }
-            if (rs.CompletedMsg != null)
+
+            if (rs?.CompletedMsg != null)
             {
-                ListBoxObject.Items.Add(rs.CompletedMsg);
+                this.ListBoxObject.Items.Add(rs.CompletedMsg);
             }
         }
+
         public string[] EmbedMsgInFormat(object msg, string[] msgFormat)
         {
-            RptStructure rs = msg as RptStructure;
-            List<string> tempMsgFormat = new List<string>();
-            for (int i = 0; i < msgFormat.Length; i++)
+            var rs = msg as RptStructure;
+            var tempMsgFormat = new List<string>();
+            foreach (var oneOfMsg in msgFormat)
             {
-                if (msgFormat[i].Contains("UpdateStkCodeProgress"))
+                if (oneOfMsg == null || rs == null) continue;
+
+                if (oneOfMsg.Contains("UpdateStkCodeProgress"))
                 {
-                    tempMsgFormat.Add(msgFormat[i].Replace("UpdateStkCodeProgress", rs.UpdateStkCodeProgress.ToString()));
+                    tempMsgFormat.Add(
+                        oneOfMsg.Replace("UpdateStkCodeProgress", rs.UpdateStkCodeProgress.ToString(CultureInfo.InvariantCulture)));
                 }
-                else if (msgFormat[i].Contains("UpdatePriceListsProgress"))
+                else if (oneOfMsg.Contains("UpdatePriceListsProgress"))
                 {
-                    tempMsgFormat.Add(msgFormat[i].Replace("UpdatePriceListsProgress", rs.UpdatePriceListsProgress.ToString()));
+                    tempMsgFormat.Add(
+                        oneOfMsg.Replace("UpdatePriceListsProgress", rs.UpdatePriceListsProgress.ToString(CultureInfo.InvariantCulture)));
                 }
-                else if (msgFormat[i].Contains("WrittingDBProgress"))
+                else if (oneOfMsg.Contains("WritingDBProgress"))
                 {
-                    tempMsgFormat.Add(msgFormat[i].Replace("WrittingDBProgress", rs.WrittingDBProgress.ToString()));
+                    tempMsgFormat.Add(oneOfMsg.Replace("WritingDBProgress", rs.WrittingDBProgress.ToString(CultureInfo.InvariantCulture)));
                 }
-                else if (msgFormat[i].Contains("ProcessTime"))
+                else if (oneOfMsg.Contains("ProcessTime"))
                 {
-                    tempMsgFormat.Add(msgFormat[i].Replace("ProcessTime", rs.ProcessTime.ToString()));
+                    tempMsgFormat.Add(oneOfMsg.Replace("ProcessTime", rs.ProcessTime.ToString()));
                 }
                 else
                 {
-                    tempMsgFormat.Add(msgFormat[i]);
+                    tempMsgFormat.Add(oneOfMsg);
                 }
             }
+
             return tempMsgFormat.ToArray();
         }
     }

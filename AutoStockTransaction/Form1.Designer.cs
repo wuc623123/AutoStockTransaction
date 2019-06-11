@@ -109,6 +109,9 @@
             this.stateBoxPanel = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.stateListBox = new DevExpress.XtraEditors.ListBoxControl();
+            this.testPanel = new DevExpress.XtraBars.Docking.DockPanel();
+            this.controlContainer3 = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.showIndicator = new DevExpress.XtraEditors.ListBoxControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.stockChart = new DevExpress.XtraCharts.ChartControl();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -150,6 +153,9 @@
             this.stateBoxPanel.SuspendLayout();
             this.dockPanel1_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stateListBox)).BeginInit();
+            this.testPanel.SuspendLayout();
+            this.controlContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.showIndicator)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stockChart)).BeginInit();
@@ -423,6 +429,7 @@
             "周",
             "月"});
             this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
+            this.repositoryItemComboBox1.NullText = "日";
             this.repositoryItemComboBox1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             // 
             // barHeaderItem6
@@ -448,6 +455,7 @@
             "MACD",
             "DMA"});
             this.repositoryItemComboBox2.Name = "repositoryItemComboBox2";
+            this.repositoryItemComboBox2.NullText = "MACD";
             this.repositoryItemComboBox2.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             // 
             // barDockControlTop
@@ -718,6 +726,7 @@
             // 
             this.panelContainer1.Controls.Add(this.stockListPanel);
             this.panelContainer1.Controls.Add(this.stateBoxPanel);
+            this.panelContainer1.Controls.Add(this.testPanel);
             this.panelContainer1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.panelContainer1.FloatSize = new System.Drawing.Size(311, 243);
             this.panelContainer1.ID = new System.Guid("b296c761-42d2-4720-9e70-bf0bd4d03d74");
@@ -736,7 +745,7 @@
             this.stockListPanel.Location = new System.Drawing.Point(0, 0);
             this.stockListPanel.Name = "stockListPanel";
             this.stockListPanel.OriginalSize = new System.Drawing.Size(294, 457);
-            this.stockListPanel.Size = new System.Drawing.Size(294, 457);
+            this.stockListPanel.Size = new System.Drawing.Size(294, 305);
             this.stockListPanel.Text = "stockListPanel";
             // 
             // controlContainer1
@@ -744,7 +753,7 @@
             this.controlContainer1.Controls.Add(this.stockListBox);
             this.controlContainer1.Location = new System.Drawing.Point(4, 24);
             this.controlContainer1.Name = "controlContainer1";
-            this.controlContainer1.Size = new System.Drawing.Size(285, 428);
+            this.controlContainer1.Size = new System.Drawing.Size(285, 276);
             this.controlContainer1.TabIndex = 0;
             // 
             // stockListBox
@@ -752,7 +761,7 @@
             this.stockListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.stockListBox.Location = new System.Drawing.Point(0, 0);
             this.stockListBox.Name = "stockListBox";
-            this.stockListBox.Size = new System.Drawing.Size(285, 428);
+            this.stockListBox.Size = new System.Drawing.Size(285, 276);
             this.stockListBox.TabIndex = 0;
             this.stockListBox.SelectedIndexChanged += new System.EventHandler(this.ListBoxControl1_SelectedIndexChanged);
             // 
@@ -764,19 +773,19 @@
             this.stateBoxPanel.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
             this.stateBoxPanel.FloatSize = new System.Drawing.Size(303, 105);
             this.stateBoxPanel.ID = new System.Guid("41324638-e907-4d34-9856-47083c1da1ff");
-            this.stateBoxPanel.Location = new System.Drawing.Point(0, 457);
+            this.stateBoxPanel.Location = new System.Drawing.Point(0, 305);
             this.stateBoxPanel.Name = "stateBoxPanel";
             this.stateBoxPanel.OriginalSize = new System.Drawing.Size(294, 457);
-            this.stateBoxPanel.Size = new System.Drawing.Size(294, 457);
+            this.stateBoxPanel.Size = new System.Drawing.Size(294, 305);
             this.stateBoxPanel.Text = "stateBoxPanel";
-            this.stateBoxPanel.CustomButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.stateBoxPanel_CustomButtonClick);
+            this.stateBoxPanel.CustomButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.StateBoxPanel_CustomButtonClick);
             // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.stateListBox);
             this.dockPanel1_Container.Location = new System.Drawing.Point(4, 27);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(285, 426);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(285, 273);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // stateListBox
@@ -785,8 +794,36 @@
             this.stateListBox.Location = new System.Drawing.Point(0, 0);
             this.stateListBox.Name = "stateListBox";
             this.stateListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.stateListBox.Size = new System.Drawing.Size(285, 426);
+            this.stateListBox.Size = new System.Drawing.Size(285, 273);
             this.stateListBox.TabIndex = 0;
+            // 
+            // testPanel
+            // 
+            this.testPanel.Controls.Add(this.controlContainer3);
+            this.testPanel.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
+            this.testPanel.FloatSize = new System.Drawing.Size(392, 377);
+            this.testPanel.ID = new System.Guid("2402c3d9-9b29-4784-bcd1-6b24e9937b7c");
+            this.testPanel.Location = new System.Drawing.Point(0, 610);
+            this.testPanel.Name = "testPanel";
+            this.testPanel.OriginalSize = new System.Drawing.Size(200, 200);
+            this.testPanel.Size = new System.Drawing.Size(294, 304);
+            this.testPanel.Text = "testPanel";
+            // 
+            // controlContainer3
+            // 
+            this.controlContainer3.Controls.Add(this.showIndicator);
+            this.controlContainer3.Location = new System.Drawing.Point(4, 24);
+            this.controlContainer3.Name = "controlContainer3";
+            this.controlContainer3.Size = new System.Drawing.Size(285, 276);
+            this.controlContainer3.TabIndex = 0;
+            // 
+            // showIndicator
+            // 
+            this.showIndicator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.showIndicator.Location = new System.Drawing.Point(0, 0);
+            this.showIndicator.Name = "showIndicator";
+            this.showIndicator.Size = new System.Drawing.Size(285, 276);
+            this.showIndicator.TabIndex = 0;
             // 
             // layoutControl1
             // 
@@ -1009,6 +1046,9 @@
             this.stateBoxPanel.ResumeLayout(false);
             this.dockPanel1_Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.stateListBox)).EndInit();
+            this.testPanel.ResumeLayout(false);
+            this.controlContainer3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.showIndicator)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(xyDiagramPane1)).EndInit();
@@ -1099,6 +1139,9 @@
         private DevExpress.XtraBars.BarEditItem IndicatorBarEditItem;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox2;
         private DevExpress.XtraBars.BarListItem barListItem3;
+        private DevExpress.XtraBars.Docking.DockPanel testPanel;
+        private DevExpress.XtraBars.Docking.ControlContainer controlContainer3;
+        private DevExpress.XtraEditors.ListBoxControl showIndicator;
     }
 }
 

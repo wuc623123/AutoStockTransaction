@@ -4,34 +4,26 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="StockModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="StockDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ListedStock">
           <Key>
             <PropertyRef Name="StkCode" />
           </Key>
           <Property Name="StkCategory" Type="int" Nullable="false" />
-          <Property Name="StkCode" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="StkName" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="ISIN_code" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="SubmitDate" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="MarketNo" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="BelongClass" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="CFI_code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="StkCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StkName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ISIN_code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SubmitDate" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MarketNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BelongClass" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CFI_code" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--產生期間發現錯誤:
-警告 6002: 資料表/檢視 'Stock.dbo.StockHistoricalPrice' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
         <EntityType Name="StockHistoricalPrice">
           <Key>
             <PropertyRef Name="StkCode" />
-            <PropertyRef Name="Date" />
-            <PropertyRef Name="OpenPrice" />
-            <PropertyRef Name="HighPrice" />
-            <PropertyRef Name="LowPrice" />
-            <PropertyRef Name="ClosePrice" />
-            <PropertyRef Name="Volume" />
           </Key>
-          <Property Name="StkCode" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="StkCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="OpenPrice" Type="money" Nullable="false" />
           <Property Name="HighPrice" Type="money" Nullable="false" />
           <Property Name="LowPrice" Type="money" Nullable="false" />
@@ -50,7 +42,7 @@
         </EntityType>
         <Association Name="FK_StockHistoricalPrice_ListedStock">
           <End Role="ListedStock" Type="Self.ListedStock" Multiplicity="1" />
-          <End Role="StockHistoricalPrice" Type="Self.StockHistoricalPrice" Multiplicity="*" />
+          <End Role="StockHistoricalPrice" Type="Self.StockHistoricalPrice" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="ListedStock">
               <PropertyRef Name="StkCode" />
@@ -60,20 +52,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="StockModelStoreContainer">
+        <EntityContainer Name="StockDataModelStoreContainer">
           <EntitySet Name="ListedStock" EntityType="Self.ListedStock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockHistoricalPrice" EntityType="Self.StockHistoricalPrice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="StockHistoricalPrice" EntityType="Self.StockHistoricalPrice" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [StockHistoricalPrice].[StkCode] AS [StkCode], 
-    [StockHistoricalPrice].[Date] AS [Date], 
-    [StockHistoricalPrice].[OpenPrice] AS [OpenPrice], 
-    [StockHistoricalPrice].[HighPrice] AS [HighPrice], 
-    [StockHistoricalPrice].[LowPrice] AS [LowPrice], 
-    [StockHistoricalPrice].[ClosePrice] AS [ClosePrice], 
-    [StockHistoricalPrice].[Volume] AS [Volume]
-    FROM [dbo].[StockHistoricalPrice] AS [StockHistoricalPrice]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_StockHistoricalPrice_ListedStock" Association="Self.FK_StockHistoricalPrice_ListedStock">
             <End Role="ListedStock" EntitySet="ListedStock" />
             <End Role="StockHistoricalPrice" EntitySet="StockHistoricalPrice" />
@@ -83,20 +65,33 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="StockModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="StockDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="ListedStock">
           <Key>
             <PropertyRef Name="StkCode" />
           </Key>
           <Property Name="StkCategory" Type="Int32" Nullable="false" />
-          <Property Name="StkCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="StkName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ISIN_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="SubmitDate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MarketNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="BelongClass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CFI_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StkCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StkName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ISIN_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SubmitDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MarketNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BelongClass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CFI_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="StockHistoricalPrice" Relationship="Self.FK_StockHistoricalPrice_ListedStock" FromRole="ListedStock" ToRole="StockHistoricalPrice" />
+        </EntityType>
+        <EntityType Name="StockHistoricalPrice">
+          <Key>
+            <PropertyRef Name="StkCode" />
+          </Key>
+          <Property Name="StkCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OpenPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="HighPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="LowPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ClosePrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Volume" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="ListedStock" Relationship="Self.FK_StockHistoricalPrice_ListedStock" FromRole="StockHistoricalPrice" ToRole="ListedStock" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -108,28 +103,9 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="StockHistoricalPrice">
-          <Key>
-            <PropertyRef Name="StkCode" />
-            <PropertyRef Name="Date" />
-            <PropertyRef Name="OpenPrice" />
-            <PropertyRef Name="HighPrice" />
-            <PropertyRef Name="LowPrice" />
-            <PropertyRef Name="ClosePrice" />
-            <PropertyRef Name="Volume" />
-          </Key>
-          <Property Name="StkCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="OpenPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="HighPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="LowPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="ClosePrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="Volume" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <NavigationProperty Name="ListedStock" Relationship="Self.FK_StockHistoricalPrice_ListedStock" FromRole="StockHistoricalPrice" ToRole="ListedStock" />
-        </EntityType>
         <Association Name="FK_StockHistoricalPrice_ListedStock">
           <End Role="ListedStock" Type="Self.ListedStock" Multiplicity="1" />
-          <End Role="StockHistoricalPrice" Type="Self.StockHistoricalPrice" Multiplicity="*" />
+          <End Role="StockHistoricalPrice" Type="Self.StockHistoricalPrice" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="ListedStock">
               <PropertyRef Name="StkCode" />
@@ -141,8 +117,8 @@
         </Association>
         <EntityContainer Name="StockEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ListedStock" EntityType="Self.ListedStock" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="StockHistoricalPrice" EntityType="Self.StockHistoricalPrice" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <AssociationSet Name="FK_StockHistoricalPrice_ListedStock" Association="Self.FK_StockHistoricalPrice_ListedStock">
             <End Role="ListedStock" EntitySet="ListedStock" />
             <End Role="StockHistoricalPrice" EntitySet="StockHistoricalPrice" />
@@ -153,9 +129,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="StockModelStoreContainer" CdmEntityContainer="StockEntities">
+        <EntityContainerMapping StorageEntityContainer="StockDataModelStoreContainer" CdmEntityContainer="StockEntities">
           <EntitySetMapping Name="ListedStock">
-            <EntityTypeMapping TypeName="StockModel.ListedStock">
+            <EntityTypeMapping TypeName="StockDataModel.ListedStock">
               <MappingFragment StoreEntitySet="ListedStock">
                 <ScalarProperty Name="StkCategory" ColumnName="StkCategory" />
                 <ScalarProperty Name="StkCode" ColumnName="StkCode" />
@@ -168,19 +144,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="StockModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="StockHistoricalPrice">
-            <EntityTypeMapping TypeName="StockModel.StockHistoricalPrice">
+            <EntityTypeMapping TypeName="StockDataModel.StockHistoricalPrice">
               <MappingFragment StoreEntitySet="StockHistoricalPrice">
                 <ScalarProperty Name="StkCode" ColumnName="StkCode" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -189,6 +154,17 @@
                 <ScalarProperty Name="LowPrice" ColumnName="LowPrice" />
                 <ScalarProperty Name="ClosePrice" ColumnName="ClosePrice" />
                 <ScalarProperty Name="Volume" ColumnName="Volume" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="StockDataModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

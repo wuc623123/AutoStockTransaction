@@ -16,19 +16,46 @@ namespace AutoStockTransaction
     {
         public StockHistoricalPrice()
         {
+             
         }
-        public StockHistoricalPrice(string stkcode,DateTime dateTime,decimal openPrice,decimal highPrice,decimal lowPrice,decimal closePrice, decimal volume)
+        public StockHistoricalPrice(
+            string symbol,
+            DateTime date,
+            decimal open,
+            decimal high,
+            decimal low,
+            decimal close,
+            decimal volume)
         {
-            this.StkCode = stkcode;
-            this.Date = dateTime;
-            this.OpenPrice = openPrice;
-            this.HighPrice = highPrice;
-            this.LowPrice = lowPrice;
-            this.ClosePrice = closePrice;
-            this.Volume = volume;
+            StkCode = symbol;
+            OpenPrice = open;
+            HighPrice = high;
+            LowPrice = low;
+            ClosePrice = close;
+            Date = date;
+            Volume = volume;
         }
+
+        public StockHistoricalPrice(
+            string symbol,
+            DateTimeOffset dateTime,
+            decimal open,
+            decimal high,
+            decimal low,
+            decimal close,
+            decimal volume)
+        {
+            StkCode = symbol;
+            Date = dateTime.DateTime;
+            OpenPrice = open;
+            HighPrice = high;
+            LowPrice = low;
+            ClosePrice = close;
+            Volume = volume;
+        }
+
         public string StkCode { get; set; }
-        public DateTime Date { get; set; }
+        public System.DateTime Date { get; set; }
         public decimal OpenPrice { get; set; }
         public decimal HighPrice { get; set; }
         public decimal LowPrice { get; set; }

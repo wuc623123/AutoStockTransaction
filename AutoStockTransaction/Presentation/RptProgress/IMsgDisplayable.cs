@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace AutoStockTransaction
 {
-    interface IMsgDisplayable
+    public interface IMsgDisplayable
     {
         ListBoxControl ListBoxObject { get; set; }
         string[] MsgFormat { get; set; }
-        List<int> IndexOfListbox { get; set; }
-        void DispMsgToUserCtrl(object msg);
+        List<int> IndexOfListBox { get; set; }
+        void DisplayMsgToUserCtrl(object msg);
     }
 }
